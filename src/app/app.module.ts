@@ -6,12 +6,41 @@ import {AppComponent} from './app.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
-import { MesaAyudaModule } from './mesa-ayuda/mesa-ayuda.module';
+
+import { AuthService } from './services/auth.service';
+import { PruebaComponent } from './components/prueba/prueba.component';
+import { HomeComponent } from './mesa-ayuda/Pages/home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { UsuarioComponent } from './mesa-ayuda/Pages/usuario/usuario.component';
+import { CrearUsuarioComponent } from './mesa-ayuda/Pages/crear-usuario/crear-usuario.component';
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,    
     LoginComponent, 
+    PruebaComponent, 
+    HomeComponent,
+    NavbarComponent,
+    UsuarioComponent,
+    CrearUsuarioComponent,
+    
+    
+    
+   
+      
     
    
   ],
@@ -21,8 +50,14 @@ import { MesaAyudaModule } from './mesa-ayuda/mesa-ayuda.module';
     HttpClientModule,
     ReactiveFormsModule,
     
+   
+    
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

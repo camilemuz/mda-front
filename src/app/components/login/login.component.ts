@@ -16,15 +16,21 @@ export class LoginComponent implements OnInit {
  //passwordCrl= new FormControl('',[Validators.required, Validators.email]);
 
   constructor ( private authService:AuthService,
-                private formBuilder: FormBuilder){
+                private formBuilder: FormBuilder,
+                private router: Router,
+                private route: ActivatedRoute){
 
     this.form = formBuilder.group({
       email: ['',[Validators.required, Validators.email]],
       password: ['',[Validators.required]]
     });
-     
-                              
-   
+    console.log(this.authService.isLoggedIn());
+    if(this.authService.isLoggedIn()){
+      console.log("esta logueado");
+      //this.router.navigate(['/prueba']);
+      this.router.navigate(['/home']);
+      
+    }    
   }
  
 
@@ -33,10 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log("entra")
     if (this.form.valid) {
       this.login(this.form.get('email').value,this.form.get('password').value);
-      console.log(this.form.value)
+      console.log(this.form.value);
     }    
   }
   
@@ -54,10 +59,12 @@ getPassword(event:Event){
 
     this.authService.login(email,password)
       .subscribe((data:any) => {
-
-        console.log("Logeado!!!");
-        console.log(data);
+        this.authService.setToken(data.token);
+        this.authService.setUser(data.user);
+        // this.router.navigateByUrl('/prueba');
+        this.router.navigate(['/home'], { relativeTo: this.route });
       }); 
+      
   }
       
   
