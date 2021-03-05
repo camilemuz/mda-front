@@ -7,6 +7,7 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 
 
 import { AuthGuard } from './guards/auth.guard';
+import { CrearUsuarioComponent } from './mesa-ayuda/Pages/crear-usuario/crear-usuario.component';
 import { HomeComponent } from './mesa-ayuda/Pages/home/home.component';
 import { UsuarioComponent } from './mesa-ayuda/Pages/usuario/usuario.component';
 
@@ -33,6 +34,10 @@ export const routes: Routes = [
   {
     path: '**', redirectTo: 'login'
   },
+  {
+    path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]
+  },
+
 ];
 
 @NgModule({

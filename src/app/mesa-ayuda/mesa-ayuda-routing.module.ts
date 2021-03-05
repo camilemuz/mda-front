@@ -5,6 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { PruebaComponent } from '../components/prueba/prueba.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { UsuarioComponent } from './Pages/usuario/usuario.component';
+import { CrearUsuarioComponent } from './Pages/crear-usuario/crear-usuario.component';
 
 
 
@@ -20,6 +21,10 @@ export const routes: Routes = [
     {
       path: 'usuario', component:UsuarioComponent,canActivate:[AuthGuard]
     },
+    {
+      path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]
+    },
+
     
    
 ];
