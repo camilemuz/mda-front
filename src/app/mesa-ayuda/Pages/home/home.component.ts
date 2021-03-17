@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,18 +8,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   
 })
 export class HomeComponent implements OnInit {
- 
+ form; 
 
   
-  constructor (){ }
+  constructor (private formBuilder: FormBuilder){
+    this.form=formBuilder.group({
+     
+
+
+    })
+   }
   
   ngOnInit(): void{
    
 
     }
-    onSubmit(){
-
-    }
+    
+  
 
     
 

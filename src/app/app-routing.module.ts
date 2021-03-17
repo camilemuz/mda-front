@@ -20,7 +20,9 @@ export const routes: Routes = [
   //   loadChildren: () => import('./mesa-ayuda/mesa-ayuda.module').then(m => m.MesaAyudaModule),
   // },
   
-  
+  {
+    path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]
+  },
   {
     path: 'usuario', component:UsuarioComponent,canActivate:[AuthGuard]
   },
@@ -34,9 +36,7 @@ export const routes: Routes = [
   {
     path: '**', redirectTo: 'login'
   },
-  {
-    path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]
-  },
+ 
 
 ];
 

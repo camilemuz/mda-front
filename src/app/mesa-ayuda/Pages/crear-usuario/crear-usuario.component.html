@@ -1,14 +1,15 @@
 <div class="container">
   <h1>Registro de Usuario</h1>
   <hr>
-  <form [formGroup]="form" (ngSubmit)="submit()">
-      <div class="well">
+  <form id="CrearUsuarioForm" class="custom-form" method="post" >
+ 
+      
           <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6">
                   <div class="form-group row">
                       <label for="nombre" class="col-form-label col-sm-4">Nombre:</label>
                     <div class="col-sm-8">
-                  <input type="text" formControlName="nombre" id="nombre" class="form-control" placeholder="Nombre" tabindex="1" required>
+                  <input type="text" [(ngModel)]="nombre" formControlName="nombre" id="nombre" class="form-control" placeholder="Nombre" >
                     </div>
                   </div>
               </div>
@@ -17,7 +18,7 @@
                   <div class="form-group row">
                       <label for="apellido" class="col-form-label col-sm-4">Apellido Paterno:</label>
                     <div class="col-sm-8">
-                      <input type="text" formControlName="ap_paterno" id="ap_paterno" class="form-control" placeholder="Apellido Paterno" tabindex="2">
+                      <input type="text" [(ngModel)]="ap_paterno" formControlName="ap_paterno" id="ap_paterno" class="form-control" placeholder="Apellido Paterno" >
                     </div>
                   </div>
               </div>
@@ -26,7 +27,7 @@
                   <div class="form-group row">
                       <label for="apellido" class="col-form-label col-sm-4">Apellido Materno:</label>
                     <div class="col-sm-8">
-                      <input type="text" formControlName="ap_materno" id="ap_materno" class="form-control" placeholder="Apellido Materno" tabindex="3">
+                      <input  type="text" [(ngModel)]="ap_materno" formControlName="ap_materno" id="ap_materno" class="form-control" placeholder="Apellido Materno">
                     </div>
                   </div>
               </div>
@@ -35,7 +36,8 @@
                   <div class="form-group row">
                       <label for="email" class="col-form-label col-sm-4">Email:</label>
                     <div class="col-sm-8"> 
-                      <input type="email" formControlName="email" id="email" class="form-control" placeholder="Email" tabindex="4">
+                      <input  type="email" [(ngModel)]="email"
+                      formControlName="email" id="email" class="form-control" placeholder="Email" >
                     </div>
                   </div>
               </div>
@@ -51,7 +53,8 @@
                   <div class="form-group row">
                       <label for="password" class="col-form-label col-sm-4">Contraseña:</label>
                     <div class="col-sm-8">
-                      <input type="password" formControlName="password" id="password" class="form-control" placeholder="Contraseña" tabindex="5">
+                      <input  type="password" [(ngModel)]="password"
+                      formControlName="password" id="password" class="form-control" placeholder="Contraseña" >
                     </div>
                   </div>
   
@@ -62,18 +65,21 @@
                   <div class="form-group row">
                       <label for="password" class="col-form-label col-sm-4">Confirmar contraseña:</label>
                     <div class="col-sm-8">
-                      <input type="password" formControlName="password_confirma" id="password_confirmation" class="form-control" placeholder="Confirmar contraseña" tabindex="6">
+                      <input  type="password" formControlName="password_confirma" id="password_confirma" class="form-control" placeholder="Confirmar contraseña">
                     </div>
                   </div>
   
               </div>
-          </div>
+        </div>
   
           <div class="row">
               <label class="col-sm-9 control-label" for="singlebutton"></label>
                   <div class=" row col-md-3">
-                      <button type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;">Guardar</button>
+                      <button type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;" (click)="register()" >Guardar</button>
                   </div>
           </div>
-      </div>
+      
+    
   </form>
+</div>
+  

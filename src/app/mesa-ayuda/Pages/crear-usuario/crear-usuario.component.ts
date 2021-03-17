@@ -1,6 +1,10 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
+
 
 @Component({
   selector: 'app-crear-usuario',
@@ -8,36 +12,41 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent implements OnInit {
+  private url='http://mda-back.test/api';
+  nombre: string | undefined;
+  ap_paterno: string | undefined;
+  ap_materno: string | undefined;
+  email: string | undefined;
+  password: string | undefined;
+ 
+
 
   form:any;
-  usuario: any;
-  
-  constructor(private formBuilder: FormBuilder,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(private authServise:AuthService, http:HttpClient) {
 
-
-    this.form=formBuilder.group({
-      nombre: ['',[Validators.required]],
-      ap_paterno: ['',[Validators.required]],
-      ap_materno: [''],
-      email: ['',[Validators.required, Validators.email]],
-      password: ['',[Validators.required]],
-      password_confirma: ['',[Validators.required]],
-    });            
-               }
+    // this.form=formBuilder.group({
+    // //   nombre: ['',[Validators.required]],
+    // //   ap_paterno: ['',[Validators.required]],
+    // //   ap_materno: [''],
+    // //   email: ['',[Validators.required, Validators.email]],
+    // //   password: ['',[Validators.required]],
+    // //   password_confirma: ['',[Validators.required]],
+    // // });  
+    
+  }
+    register(){
+      console.log(this.nombre);
+      console.log(this.ap_paterno);
+      console.log(this.ap_materno);
+      console.log(this.email);
+      console.log(this.password);
+    } 
+   
+              
 
   ngOnInit(): void {
-    this.getUsuario();
-  }
-  getUsuario() {
-    throw new Error('Method not implemented.');
-  }
-  submit() {
-    if (this.form.valid) {
-      this.usuario(this.form.get('nombre').value,this.form.get('ap_paterno').value,this.form.get('ap_materno').value,this.form.get('email').value,this.form.get('password').value,this.form.get('confirma_password').value);
-      console.log(this.form.value);
-    }    
-  }
+     }
+  
+     
 
 }
