@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Registro de Usuario</h1>
   <hr>
-  <form id="CrearUsuarioForm" class="custom-form" method="post" >
+  <form id="CrearUsuarioForm" class="custom-form" (ngSubmit)="Register()"  >
  
       
           <div class="row">
@@ -75,7 +75,7 @@
           <div class="row">
               <label class="col-sm-9 control-label" for="singlebutton"></label>
                   <div class=" row col-md-3">
-                      <button type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;" (click)="register()" >Guardar</button>
+                      <button type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;" (click)="Register()" >Guardar</button>
                   </div>
           </div>
       

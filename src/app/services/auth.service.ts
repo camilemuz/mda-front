@@ -70,14 +70,14 @@ export class AuthService {
 
 //     return this.userToken;
 // }
-   register(nombre:string,email:string,ap_paterno:string, ap_materno:string, password: string, )  {
+   registerUser(nombre:string, email:string, ap_paterno:string, ap_materno:string, password: string, )  {
      
     return this.http.post(this.url+ '/crear_usuario',{
-      nombre,
-      email,
-      ap_paterno, 
-      ap_materno, 
-      password})
+      nombre:nombre,
+      email:email,
+      ap_paterno: ap_paterno, 
+      ap_materno: ap_materno, 
+      password: password}).pipe(map(data => data));
 
    }
   

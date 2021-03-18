@@ -12,7 +12,7 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 import { HomeComponent } from './mesa-ayuda/Pages/home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsuarioComponent } from './mesa-ayuda/Pages/usuario/usuario.component';
-import { CrearUsuarioComponent } from './mesa-ayuda/Pages/crear-usuario/crear-usuario.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 
 

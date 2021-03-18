@@ -5,7 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { PruebaComponent } from '../components/prueba/prueba.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { UsuarioComponent } from './Pages/usuario/usuario.component';
-import { CrearUsuarioComponent } from './Pages/crear-usuario/crear-usuario.component';
+import { CrearUsuarioComponent } from '../components/crear-usuario/crear-usuario.component';
 
 
 

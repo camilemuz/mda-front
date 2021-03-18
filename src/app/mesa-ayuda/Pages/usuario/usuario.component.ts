@@ -3,9 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { RegistroService } from 'src/app/services/registro.service';
-import { CrearUsuarioComponent } from '../crear-usuario/crear-usuario.component';
-import { Registro } from 'src/app/components/Interfaces/registro';
+
+import { CrearUsuarioComponent } from '../../../components/crear-usuario/crear-usuario.component';
+
 
 @Component({
   selector: 'app-usuario',
