@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Registro de Usuario</h1>
   <hr>
-  <form id="CrearUsuarioForm" class="custom-form" (ngSubmit)="Register()"  >
+  <form  class="custom-form" [formGroup]="registerForm" (ngSubmit)="Register()"  >
  
       
           <div class="row">
@@ -9,7 +9,7 @@
                   <div class="form-group row">
                       <label for="nombre" class="col-form-label col-sm-4">Nombre:</label>
                     <div class="col-sm-8">
-                  <input type="text" [(ngModel)]="nombre" formControlName="nombre" id="nombre" class="form-control" placeholder="Nombre" >
+                  <input type="text"  formControlName="nombre"  class="form-control" placeholder="Nombre" >
                     </div>
                   </div>
               </div>
@@ -18,7 +18,7 @@
                   <div class="form-group row">
                       <label for="apellido" class="col-form-label col-sm-4">Apellido Paterno:</label>
                     <div class="col-sm-8">
-                      <input type="text" [(ngModel)]="ap_paterno" formControlName="ap_paterno" id="ap_paterno" class="form-control" placeholder="Apellido Paterno" >
+                      <input type="text"  formControlName="ap_paterno"  class="form-control" placeholder="Apellido Paterno" >
                     </div>
                   </div>
               </div>
@@ -27,7 +27,7 @@
                   <div class="form-group row">
                       <label for="apellido" class="col-form-label col-sm-4">Apellido Materno:</label>
                     <div class="col-sm-8">
-                      <input  type="text" [(ngModel)]="ap_materno" formControlName="ap_materno" id="ap_materno" class="form-control" placeholder="Apellido Materno">
+                      <input  type="text"  formControlName="ap_materno"  class="form-control" placeholder="Apellido Materno">
                     </div>
                   </div>
               </div>
@@ -36,8 +36,8 @@
                   <div class="form-group row">
                       <label for="email" class="col-form-label col-sm-4">Email:</label>
                     <div class="col-sm-8"> 
-                      <input  type="email" [(ngModel)]="email"
-                      formControlName="email" id="email" class="form-control" placeholder="Email" >
+                      <input  type="email" 
+                      formControlName="email"  class="form-control" placeholder="Email" >
                     </div>
                   </div>
               </div>
@@ -53,8 +53,7 @@
                   <div class="form-group row">
                       <label for="password" class="col-form-label col-sm-4">Contraseña:</label>
                     <div class="col-sm-8">
-                      <input  type="password" [(ngModel)]="password"
-                      formControlName="password" id="password" class="form-control" placeholder="Contraseña" >
+                      <input  type="password" formControlName="password"  class="form-control" placeholder="Contraseña" >
                     </div>
                   </div>
   
@@ -65,7 +64,7 @@
                   <div class="form-group row">
                       <label for="password" class="col-form-label col-sm-4">Confirmar contraseña:</label>
                     <div class="col-sm-8">
-                      <input  type="password" formControlName="password_confirma" id="password_confirma" class="form-control" placeholder="Confirmar contraseña">
+                      <input  type="password" formControlName="password_confirma"  class="form-control" placeholder="Confirmar contraseña">
                     </div>
                   </div>
   
