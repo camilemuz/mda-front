@@ -72,7 +72,7 @@ export class AuthService {
 // }
   //  
   register(form: any) {
-   
+    console.log("desde auth",form);
     return this.http.post(this.url + '/user', form.value);
     
   }

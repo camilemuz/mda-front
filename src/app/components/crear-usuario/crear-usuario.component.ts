@@ -38,6 +38,7 @@ export class CrearUsuarioComponent implements OnInit {
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'email': new FormControl(null, [Validators.required, Validators.email]),
+          'rol': new FormControl(null, [Validators.required]),
           'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
           'password_confirma': new FormControl(null, [Validators.required])
         })
@@ -50,6 +51,7 @@ export class CrearUsuarioComponent implements OnInit {
       get password_confirma() { return this.registerForm.get('password_confirma'); }
 
       Register() {
+        console.log("desde controller",this.registerForm);
         this.auth.register(this.registerForm).subscribe(response => {
           
           
