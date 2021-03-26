@@ -10,6 +10,16 @@
                       <label for="nombre" class="col-form-label col-sm-4">Nombre:</label>
                     <div class="col-sm-8">
                   <input type="text"  formControlName="nombre"  class="form-control" placeholder="Nombre" >
+
+                  <div *ngIf="this.registerForm.get('nombre').errors && registerForm.get('nombre').dirty ">
+                                      
+                    <span *ngIf="this.registerForm.get('nombre').errors?.required">
+                      <font color ="red">El nombre no puede quedar vacío</font>
+                    </span>
+                    <span *ngIf="this.registerForm.get('nombre').errors?.minlength">
+                      <font color ="red">Debe tener como mínimo 3 caracteres</font>
+                    </span>
+                  </div>
                     </div>
                   </div>
               </div>
@@ -19,6 +29,17 @@
                       <label for="apellido" class="col-form-label col-sm-4">Apellido Paterno:</label>
                     <div class="col-sm-8">
                       <input type="text"  formControlName="ap_paterno"  class="form-control" placeholder="Apellido Paterno" >
+
+                      <div *ngIf="this.registerForm.get('ap_paterno').errors && registerForm.get('ap_paterno').dirty ">
+                                      
+                        <span *ngIf="this.registerForm.get('ap_paterno').errors?.required">
+                          <font color ="red">El Apellido Paterno no puede quedar vacío</font>
+                        </span>
+                        <span *ngIf="this.registerForm.get('ap_paterno').errors?.minlength">
+                          <font color ="red">Debe tener como mínimo 3 caracteres</font>
+                        </span>
+                      </div>
+
                     </div>
                   </div>
               </div>
@@ -53,6 +74,17 @@
                     <div class="col-sm-8"> 
                       <input  type="email" 
                       formControlName="email"  class="form-control" placeholder="Email" >
+
+                      <div *ngIf="this.registerForm.get('email').errors && registerForm.get('email').dirty ">
+                                      
+                        <span *ngIf="this.registerForm.get('email').errors?.required">
+                          <font color ="red">El email no puede quedar vacío</font>
+                        </span>
+                        <span *ngIf="this.registerForm.get('email').errors?.email">
+                          <font color ="red">El email no es válido</font>
+                        </span>
+                      </div>
+
                     </div>
                   </div>
               </div>

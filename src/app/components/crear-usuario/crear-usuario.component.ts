@@ -59,7 +59,7 @@ export class CrearUsuarioComponent implements OnInit {
     
         })
         
-      
+      alert ('Usuario registrado')
     
    
               
