@@ -21,7 +21,7 @@ export const routes: Routes = [
   // },
   
   {
-    path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]
+    path: 'crear-usuario', component:CrearUsuarioComponent
   },
   {
     path: 'usuario', component:UsuarioComponent,canActivate:[AuthGuard]
