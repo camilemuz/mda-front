@@ -77,7 +77,9 @@ export class AuthService {
     
   }
 
-
+recuperarTodos(){
+  return this.http.get(this.url+'/user');
+}
   
 }
   
