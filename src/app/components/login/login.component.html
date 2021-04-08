@@ -7,6 +7,9 @@
                 <br>
 				<div class="ContentForm">
         			<form [formGroup]="form" (ngSubmit)="submit()">
+
+						
+
 						<div *ngIf="this.form.get('email').errors && form.get('email').dirty ">
 							<small *ngIf = " form.get('email'). hasError('required') " ><h3>El email es un campo requerido</h3></small>
 						</div>	
@@ -37,6 +40,19 @@
 						type="submit" 
 						class="btn btn-primary btn-block btn-large">
 						Ingresar</button>
+						</div>
+
+
+						<br>
+						
+							<h3>¿No posee una cuenta?</h3>
+						
+						<div class="row">
+							
+						<button type="button" 
+						 routerLink="/crear-usuario"
+						  class="btn1 btn1-primary btn1-block btn1-large">
+						  Registrarse</button>
 						</div>
 		 			</form>
 			 </div>	

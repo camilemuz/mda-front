@@ -16,11 +16,8 @@ import { CrearUsuarioComponent } from '../../../components/crear-usuario/crear-u
 export class UsuarioComponent implements OnInit {
   private url='http://mda-back.test/api';
   users=null;
-  user={
-    nombre:null,
-    ap_paterno:null,
-    email:null
-  }
+  user:any;
+  
 
 
   constructor(private auth:AuthService,
@@ -49,4 +46,5 @@ export interface User{
   ap_paterno: string;
   ap_materno: string;
   email: string;
+  rol: string;
 }

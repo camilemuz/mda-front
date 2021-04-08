@@ -45,15 +45,6 @@ export class LoginComponent implements OnInit {
     }    
   }
   
-/*getEmail(event:Event){
-  event.preventDefault();
-  console.log(this.emailCrl.value);
-}
-getPassword(event:Event){
-    event.preventDefault();
-    console.log(this.passwordCrl.value); */
-
-
   
   login(email: string,password: string): void{
 
