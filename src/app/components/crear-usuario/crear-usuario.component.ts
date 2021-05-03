@@ -38,7 +38,6 @@ export class CrearUsuarioComponent implements OnInit {
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null,[]),
           'email': new FormControl(null, [Validators.required, Validators.email]),
-          'rol': new FormControl(null, [Validators.required]),
           'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
           'password_confirma': new FormControl(null, [Validators.required])
         })
