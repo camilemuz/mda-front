@@ -2,10 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserRestService } from 'src/app/services/user-rest.service';
 
-
-import { CrearUsuarioComponent } from '../../../components/crear-usuario/crear-usuario.component';
 
 
 @Component({
@@ -15,36 +13,48 @@ import { CrearUsuarioComponent } from '../../../components/crear-usuario/crear-u
 })
 export class UsuarioComponent implements OnInit {
   private url='http://mda-back.test/api';
-  users=null;
-  user:any;
+  userList:any;
+  
   
 
 
-  constructor(private auth:AuthService,
+  constructor(private userRest:UserRestService,
     http:HttpClient,
    private formBuilder: FormBuilder,
-   private route: Router,
-   private router: ActivatedRoute){
+   private router: Router,
+   private route: ActivatedRoute){
     http.get(this.url+'/user').subscribe((data)=>{
       console.log(data);
+      this.userList=data;
     });
   
  
 }
   ngOnInit(): void {
-    this.recuperarTodos();
+    this.userRest.getUsers().subscribe(
+      (response)=>{console.log(this. userList=response.user);},
+    
+      (error)=> {console.log(error)}
+      );
   }
-  recuperarTodos(){
-    this.auth.recuperarTodos().subscribe(result => this.user=result);
+  // recuperarTodos(){
+  //   this.auth.recuperarTodos().subscribe(result => this.user=result);
+  // }
+  deleteUser(id:number){
+    if(confirm("¿Desea eliminar usuario?")){
+      this.userRest.deleteUser(id).subscribe(
+        (response)=> console.log(response),
+        (error)=>console.log(error)
+      );
+    
+    }
   }
-  
-} 
+  editUser(id: number) {
+    this.router.navigate(['users/edit',id]);
+  }
 
-export interface User{
-  id?: number;
-  nombre: string;
-  ap_paterno: string;
-  ap_materno: string;
-  email: string;
-  rol: string;
+
 }
+
+
+

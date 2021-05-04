@@ -38,6 +38,7 @@ export class CrearUsuarioComponent implements OnInit {
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null,[]),
           'email': new FormControl(null, [Validators.required, Validators.email]),
+          'rol': new FormControl(null, [Validators.required]),
           'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
           'password_confirma': new FormControl(null, [Validators.required])
         })
@@ -46,6 +47,7 @@ export class CrearUsuarioComponent implements OnInit {
       get ap_paterno() { return this.registerForm.get('ap_paterno'); }
       get ap_materno() { return this.registerForm.get('ap_materno'); }
       get email() { return this.registerForm.get('email'); }
+      get rol() { return this.registerForm.get('rol'); }
       get password() { return this.registerForm.get('password'); }
       get password_confirma() { return this.registerForm.get('password_confirma'); }
 
