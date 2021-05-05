@@ -13,17 +13,7 @@ import { HomeComponent } from './mesa-ayuda/Pages/home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsuarioComponent } from './mesa-ayuda/Pages/usuario/usuario.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
-
-
-
-
-
-
-
-
-
-
-
+import { EditarUsuarioComponent } from './mesa-ayuda/Pages/editar-usuario/editar-usuario.component';
 
 
 
@@ -36,11 +26,8 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     NavbarComponent,
     UsuarioComponent,
     CrearUsuarioComponent,
+    EditarUsuarioComponent
     
-    
-    
-   
-      
     
    
   ],
@@ -49,9 +36,8 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
    
-    
+   
   ],
   providers: [
     AuthService,

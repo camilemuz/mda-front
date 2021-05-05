@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { HomeComponent } from './mesa-ayuda/Pages/home/home.component';
 import { UsuarioComponent } from './mesa-ayuda/Pages/usuario/usuario.component';
+import { EditarUsuarioComponent } from './mesa-ayuda/Pages/editar-usuario/editar-usuario.component';
 
 
 export const routes: Routes = [
@@ -25,6 +26,9 @@ export const routes: Routes = [
   },
   {
     path: 'usuario', component:UsuarioComponent,canActivate:[AuthGuard]
+  },
+  {
+    path: 'editar-usuario', component:EditarUsuarioComponent,canActivate:[AuthGuard]
   },
   
   {

@@ -18,11 +18,7 @@ export class UsuarioComponent implements OnInit {
   
 
 
-  constructor(private userRest:UserRestService,
-    http:HttpClient,
-   private formBuilder: FormBuilder,
-   private router: Router,
-   private route: ActivatedRoute){
+  constructor(private userRest:UserRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute){
     http.get(this.url+'/user').subscribe((data)=>{
       console.log(data);
       this.userList=data;
@@ -50,7 +46,7 @@ export class UsuarioComponent implements OnInit {
     }
   }
   editUser(id: number) {
-    this.router.navigate(['users/edit',id]);
+    this.router.navigate(['/editar-usuario',id]);
   }
 
 
