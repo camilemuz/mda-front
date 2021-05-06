@@ -14,8 +14,8 @@ export class UserRestService {
     return this.http.get(this.url+'/user');
   }
   
-  editUser(id:any): Observable<any> {
-    return this.http.get(this.url+'/user'+id);
+  editUser(id: number): Observable<any> {
+    return this.http.get(this.url+'/user/'+id);
   }
 
   updateUser(form:any,id:any): Observable<any> {

@@ -1,16 +1,12 @@
 
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from './components/login/login.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
-
-
-
+import {LoginComponent} from './components/auth/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
-import { HomeComponent } from './mesa-ayuda/Pages/home/home.component';
-import { UsuarioComponent } from './mesa-ayuda/Pages/usuario/usuario.component';
-import { EditarUsuarioComponent } from './mesa-ayuda/Pages/editar-usuario/editar-usuario.component';
+import { CrearUsuarioComponent } from './components/admin/usuarios/crear-usuario/crear-usuario.component';
+import { HomeComponent } from './components/Pages/home/home.component';
+import { EditarUsuarioComponent } from './components/admin/usuarios/editar-usuario/editar-usuario.component';
+import { ListarUsuarioComponent } from './components/admin/usuarios/listar-usuario/listar-usuario.component';
 
 
 export const routes: Routes = [
@@ -21,19 +17,16 @@ export const routes: Routes = [
   //   loadChildren: () => import('./mesa-ayuda/mesa-ayuda.module').then(m => m.MesaAyudaModule),
   // },
   
+  // {
+  //   path: 'crear-usuario', component:CrearUsuarioComponent
+  // },
   {
-    path: 'crear-usuario', component:CrearUsuarioComponent
-  },
-  {
-    path: 'usuario', component:UsuarioComponent,canActivate:[AuthGuard]
-  },
-  {
-    path: 'editar-usuario', component:EditarUsuarioComponent,canActivate:[AuthGuard]
-  },
-  
-  {
-    path: 'prueba', component:PruebaComponent,
-  },
+    path: 'listar-usuario', component:ListarUsuarioComponent,canActivate:[AuthGuard],
+     },
+ 
+  { path: 'editar-usuario/:id', component:EditarUsuarioComponent,canActivate:[AuthGuard]},
+  { path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]},
+ 
   {
     path: 'home', component:HomeComponent,canActivate:[AuthGuard]
   },

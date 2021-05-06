@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MesaAyudaComponent } from './mesa-ayuda.component';
+import { ListarUsuarioComponent } from './listar-usuario.component';
 
-describe('MesaAyudaComponent', () => {
-  let component: MesaAyudaComponent;
-  let fixture: ComponentFixture<MesaAyudaComponent>;
+describe('ListarUsuarioComponent', () => {
+  let component: ListarUsuarioComponent;
+  let fixture: ComponentFixture<ListarUsuarioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MesaAyudaComponent ]
+      declarations: [ ListarUsuarioComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MesaAyudaComponent);
+    fixture = TestBed.createComponent(ListarUsuarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

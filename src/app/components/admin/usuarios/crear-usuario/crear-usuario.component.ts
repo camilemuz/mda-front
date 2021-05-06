@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { password } from '@rxweb/reactive-form-validators';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -14,14 +15,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CrearUsuarioComponent implements OnInit {
   [x: string]: any;
-  private url='http://mda-back.test/api';
     registerForm:any;
     
   constructor(private auth:AuthService,
-     http:HttpClient,
-    private formBuilder: FormBuilder,
-    private route: Router,
-    private router: ActivatedRoute) {
+     private route: Router) {
 
  
 
@@ -44,8 +41,8 @@ export class CrearUsuarioComponent implements OnInit {
           'email': new FormControl(null, [Validators.required, Validators.email]),
           'rol': new FormControl(null, [Validators.required]),
           'password': new FormControl(null, [Validators.required, Validators.minLength(5)]), 
-          // 'confirma': new FormControl(null, [RxwebValidators.compare({fieldName:'password'})]),         
-        },
+          //  'confirma': new FormControl(null, [Validators.required]),         
+        }
         ); }
 
        
@@ -61,18 +58,37 @@ export class CrearUsuarioComponent implements OnInit {
       // get confirma() { return this.registerForm.get('confirma'); }
 
       Register() {
-        console.log("desde controller",this.registerForm);
-        this.auth.register(this.registerForm).subscribe(response => {
-          
-          
+        // console.log("desde controller",this.registerForm);
+        this.auth.register(this.registerForm).subscribe(() => {      
           this.route.navigate(['home/login']);
     
         })
         
       // alert ('Usuario registrado')
-    
+      
 
-  }
+       }
+      //  checarSiSonIguales(): boolean {
+      //   return this.registerForm.hasError('noSonIguales') &&
+      //     this.registerForm.get('password').dirty &&
+      //     this.registerForm.get('confirma').dirty;
+      // }
+
+
   
 }
+
+
+// export const validarQueSeanIguales: ValidatorFn = (control: FormGroup): ValidationErrors| null => {
+//   const password = control.get('password');
+//   const confirmarPassword = control.get('confirma');
+  
+//   if(!password||!confirmarPassword){
+//     return null;
+//   }
+
+//   // return password.value === confirmarPassword.value ? null : { 'noSonIguales': true };
+
+// return password === confirmarPassword ? null: {checarSiSonIguales: true};
+// };
 

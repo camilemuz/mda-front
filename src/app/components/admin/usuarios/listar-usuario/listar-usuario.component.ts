@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
-
-
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.css']
+  selector: 'app-listar-usuario',
+  templateUrl: './listar-usuario.component.html',
+  styleUrls: ['./listar-usuario.component.css']
 })
-export class UsuarioComponent implements OnInit {
+export class ListarUsuarioComponent implements OnInit {
   private url='http://mda-back.test/api';
   userList:any;
   
@@ -27,11 +25,11 @@ export class UsuarioComponent implements OnInit {
  
 }
   ngOnInit(): void {
-    this.userRest.getUsers().subscribe(
-      (response)=>{console.log(this. userList=response.user);},
+    // this.userRest.getUsers().subscribe(
+    //   (response)=>{console.log(this.userList=response.user);},
     
-      (error)=> {console.log(error)}
-      );
+    //   (error)=> {console.log(error)}
+    //   );
   }
   // recuperarTodos(){
   //   this.auth.recuperarTodos().subscribe(result => this.user=result);
@@ -51,6 +49,3 @@ export class UsuarioComponent implements OnInit {
 
 
 }
-
-
-

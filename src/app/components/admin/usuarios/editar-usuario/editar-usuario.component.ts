@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
@@ -13,23 +14,41 @@ export class EditarUsuarioComponent implements OnInit {
   updateUser: FormGroup | any;
   serverErrors = [];
   @Input() data: any;
-
+  private url='http://mda-back.test/api';
   constructor(
     private route: ActivatedRoute,
      private userRest: UserRestService, 
-     private router: Router) { }
+     private router: Router,
+     public http:HttpClient ) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params.id;
-     this.userRest.editUser(id).subscribe(
-      (response) => {
-        this.updateUser.patchValue({
-          'nombre': response.user.nombre,
-          'email':response.user.email
-        })
-      },
-      (error) => console.log(error)
+    console.log(id);
+    this.http.get(this.url+'/user/'+id).subscribe((response)=>{
+      console.log(response);
+      // this.updateUser.patchValue({
+    
+        // 'nombre': response.user.nombre,
+        // 'ap_paterno': response.user.ap_paterno,
+        // 'ap_materno': response.user.ap_materno,
+        // 'email':response.user.email
+      // })
+    }, error => {console.log(error);}
     );
+    //  this.userRest.editUser(id).subscribe(
+    //   (response) => {
+    //     console.log(response);
+        
+        // this.updateUser.patchValue({
+    
+        //   'nombre': response.user.nombre,
+        //   'ap_paterno': response.user.ap_paterno,
+        //   'ap_materno': response.user.ap_materno,
+        //   'email':response.user.email
+        // })
+    //   },
+    //   (error) => console.log(error)
+    // );
 
     console.log(this.data);
 
@@ -41,6 +60,8 @@ export class EditarUsuarioComponent implements OnInit {
           'rol': new FormControl(null, [Validators.required]),
       
     });
+
+
 }
 get nombre() { return this.updateUser.get('nombre'); }
 get ap_paterno() { return this.updateUser.get('ap_paterno'); }
