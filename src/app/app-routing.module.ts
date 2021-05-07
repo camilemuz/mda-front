@@ -7,10 +7,13 @@ import { CrearUsuarioComponent } from './components/admin/usuarios/crear-usuario
 import { HomeComponent } from './components/Pages/home/home.component';
 import { EditarUsuarioComponent } from './components/admin/usuarios/editar-usuario/editar-usuario.component';
 import { ListarUsuarioComponent } from './components/admin/usuarios/listar-usuario/listar-usuario.component';
+import { RegistroComponent } from './components/Pages/registro/registro.component';
 
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent, 
+  },
+  {path: 'registro', component: RegistroComponent, 
   },
   // {
   //   path: 'mda',

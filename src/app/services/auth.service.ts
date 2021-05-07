@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   public logout(){
-    localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('token');
   }
 
 
@@ -38,11 +38,11 @@ export class AuthService {
   }
 
   setToken(token:string):void{
-    localStorage.setItem('ACCESS_TOKEN', token);
+    localStorage.setItem('token', token);
   }
 
   getToken(){
-    return localStorage.getItem('ACCESS_TOKEN');
+    return localStorage.getItem('token');
   }
 
  

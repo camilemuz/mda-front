@@ -19,7 +19,7 @@ export class UserRestService {
   }
 
   updateUser(form:any,id:any): Observable<any> {
-    return this.http.put(this.url +'/user'+ id, form.value);
+    return this.http.put(this.url +'/user/'+ id, form.value);
   }
 
   storeUser(form:any): Observable<any> {
@@ -27,6 +27,6 @@ export class UserRestService {
   }
 
   deleteUser(id:any): Observable<any> {
-    return this.http.delete(this.url+'/user'+ id);
+    return this.http.delete(this.url+'/user/'+ id);
   }
 }

@@ -25,17 +25,13 @@ export class ListarUsuarioComponent implements OnInit {
  
 }
   ngOnInit(): void {
-    // this.userRest.getUsers().subscribe(
-    //   (response)=>{console.log(this.userList=response.user);},
-    
-    //   (error)=> {console.log(error)}
-    //   );
+   
   }
-  // recuperarTodos(){
-  //   this.auth.recuperarTodos().subscribe(result => this.user=result);
-  // }
+  
   deleteUser(id:number){
     if(confirm("¿Desea eliminar usuario?")){
+      console.log(id);
+      
       this.userRest.deleteUser(id).subscribe(
         (response)=> console.log(response),
         (error)=>console.log(error)
