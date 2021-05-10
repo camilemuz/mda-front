@@ -12,7 +12,8 @@ export class AuthService {
   private userToken: string | null | undefined;
   
   
-  constructor(private http: HttpClient) { 
+  
+  constructor(private http: HttpClient, private router: Router) { 
     
   }
     
@@ -22,6 +23,7 @@ export class AuthService {
 
   public logout(){
     localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
 

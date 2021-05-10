@@ -54,8 +54,14 @@ export class LoginComponent implements OnInit {
         this.authService.setUser(data.user);
         // this.router.navigateByUrl('/prueba');
         this.router.navigate(['/home'], { relativeTo: this.route });
-      }); 
-      
+      },
+      error=>{
+        
+        
+      }
+    
+      ); 
+      alert("Bienvenid@");
   }
       
   

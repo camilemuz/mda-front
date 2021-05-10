@@ -38,6 +38,7 @@ export class CrearUsuarioComponent implements OnInit {
           'nombre': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null,[]),
+          'unidad': new FormControl(null,[Validators.required]),
           'email': new FormControl(null, [Validators.required, Validators.email]),
           'rol': new FormControl(null, [Validators.required]),
           'password': new FormControl(null, [Validators.required, Validators.minLength(5)]), 
@@ -52,6 +53,7 @@ export class CrearUsuarioComponent implements OnInit {
       get nombre() { return this.registerForm.get('nombre'); }
       get ap_paterno() { return this.registerForm.get('ap_paterno'); }
       get ap_materno() { return this.registerForm.get('ap_materno'); }
+      get unidad() { return this.registerForm.get('unidad'); }
       get email() { return this.registerForm.get('email'); }
       get rol() { return this.registerForm.get('rol'); }
       get password() { return this.registerForm.get('password'); }
