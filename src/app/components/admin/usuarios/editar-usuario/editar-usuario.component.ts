@@ -33,6 +33,7 @@ export class EditarUsuarioComponent implements OnInit {
         'nombre': response.data.nombre,
         'ap_paterno': response.data.ap_paterno,
         'ap_materno': response.data.ap_materno,
+        'unidad':response.data.unidad
         // 'email':response.data.email
         })
       },
@@ -47,6 +48,7 @@ export class EditarUsuarioComponent implements OnInit {
           'ap_materno': new FormControl(null,[]),
           // 'email': new FormControl(null, [Validators.required, Validators.email]),
           'rol': new FormControl(null, [Validators.required]),
+          'unidad':new FormControl(null, )
       
     });
 
@@ -57,7 +59,7 @@ export class EditarUsuarioComponent implements OnInit {
       get ap_materno() { return this.updateUser.get('ap_materno'); }
       // get email() { return this.updateUser.get('email'); }
       get rol() { return this.updateUser.get('rol'); }
-
+      get unidad() { return this.updateUser.get('unidad'); }
 
       updateUserDetails(){
         let id = this.route.snapshot.params.id;
