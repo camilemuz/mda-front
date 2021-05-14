@@ -84,10 +84,10 @@
                 <label for="cargo" class="col-form-label col-sm-4">Cargo:</label>
               <div class="col-sm-8">
 
-                <select formControlName="cargo" class="form-control"> 
-                  <option value="ADMIN">ADMIN</option>
-                  <option value="FUNCIONARIO">FUNCIONARIO</option>
-                  <option value="TÉCNICO">TÉCNICO</option>
+                <select formControlName="cargo" class="form-control">
+                  <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
+                  <option [ngValue]="row.id" *ngFor="let row of cargoList.data">{{row.cargo}}</option>
+                  
                 </select>
 
                 </div>

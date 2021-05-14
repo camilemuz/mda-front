@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CargoRestService } from 'src/app/services/cargo-rest.service';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -12,15 +13,18 @@ import { UserRestService } from 'src/app/services/user-rest.service';
 })
 export class RegistroComponent implements OnInit {
 
-  [x: string]: any;
+  // [x: string]: any;
     registerForm:any;
-    
-  constructor(private auth:AuthService,
-     private route: Router, private userRest:UserRestService,  http:HttpClient) {
+    userList:any;
+    cargoList:any;
+    private url='http://mda-back.test/api';
 
-      http.get(this.url+'/user').subscribe((data)=>{
+  constructor(private auth:AuthService,
+     private route: Router, private userRest:UserRestService,  http:HttpClient, private cargoRest:CargoRestService) {
+
+      http.get(this.url+'/cargo').subscribe((data)=>{
         console.log(data);
-        this.userList=data;
+        this.cargoList=data;
       });
 
     // this.form=formBuilder.group({
@@ -62,7 +66,7 @@ export class RegistroComponent implements OnInit {
       // get confirma() { return this.registerForm.get('confirma'); }
 
       Register() {
-        // console.log("desde controller",this.registerForm);
+       // console.log("desde controller",this.registerForm);
         this.auth.register(this.registerForm).subscribe(() => {      
           this.route.navigate(['home/login']);
     
