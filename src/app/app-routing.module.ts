@@ -11,24 +11,22 @@ import { RegistroComponent } from './components/Pages/registro/registro.componen
 
 
 export const routes: Routes = [
-  {path: 'login', component: LoginComponent, 
-  },
-  {path: 'registro', component: RegistroComponent, 
-  },
-  // {
-  //   path: 'mda',
-  //   loadChildren: () => import('./mesa-ayuda/mesa-ayuda.module').then(m => m.MesaAyudaModule),
-  // },
-  
-  // {
-  //   path: 'crear-usuario', component:CrearUsuarioComponent
-  // },
   {
+    path: 'login', component: LoginComponent, 
+  },
+  {
+    path: 'registro', component: RegistroComponent, 
+  },
+   {
     path: 'listar-usuario', component:ListarUsuarioComponent,canActivate:[AuthGuard],
-     },
+   },
  
-  { path: 'editar-usuario/:id', component:EditarUsuarioComponent,canActivate:[AuthGuard]},
-  { path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]},
+  {
+    path: 'editar-usuario/:id', component:EditarUsuarioComponent,canActivate:[AuthGuard]
+   },
+  { 
+    path: 'crear-usuario', component:CrearUsuarioComponent,canActivate:[AuthGuard]
+  },
  
   {
     path: 'home', component:HomeComponent,canActivate:[AuthGuard]

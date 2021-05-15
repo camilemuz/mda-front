@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CargoRestService } from 'src/app/services/cargo-rest.service';
+import { CommonAuthService } from 'src/app/services/common-auth.service';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class RegistroComponent implements OnInit {
     cargoList:any;
     private url='http://mda-back.test/api';
 
-  constructor(private auth:AuthService,
+  constructor(private auth:CommonAuthService,
      private route: Router, private userRest:UserRestService,  http:HttpClient, private cargoRest:CargoRestService) {
 
       http.get(this.url+'/cargo').subscribe((data)=>{
@@ -67,7 +68,7 @@ export class RegistroComponent implements OnInit {
 
       Register() {
        // console.log("desde controller",this.registerForm);
-        this.auth.register(this.registerForm).subscribe(() => {      
+        this.auth.registerUser(this.registerForm).subscribe(() => {      
           this.route.navigate(['home/login']);
     
         })

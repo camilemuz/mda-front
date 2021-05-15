@@ -97,7 +97,7 @@ export class CrearUsuarioComponent implements OnInit {
 //     return null;
 //   }
 
-//   // return password.value === confirmarPassword.value ? null : { 'noSonIguales': true };
+
 
 // return password === confirmarPassword ? null: {checarSiSonIguales: true};
 // };

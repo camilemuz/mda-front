@@ -1,5 +1,8 @@
 <div class="container">
     <h1>Registro de Usuario</h1>
+    
+						
+						
     <hr>
     <form  class="custom-form" [formGroup]="registerForm" (ngSubmit)="Register()"  novalidate="">
    
@@ -170,6 +173,15 @@
                     </div>
             </div>
         
+            <div class="row">
+              <div class="col-md-3">
+							<h6>¿Ya tiene una cuenta?</h6>
+						<button type="button"  
+						 routerLink="/login"
+						  class="btn btn-primary  btn-block" style="background-color: #ff9100;">
+						  Login </button>
+            </div>
+          </div>
       
     </form>
   </div>

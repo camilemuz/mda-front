@@ -46,7 +46,7 @@ export class EditarUsuarioComponent implements OnInit {
         'ap_materno': response.data.ap_materno,
         'unidad':response.data.unidad,
         'rol':response.data.rol,
-        "cargo":response.data.cargo
+        "id_cargo":response.data.id_cargo
         // 'email':response.data.email
         })
       },
@@ -61,7 +61,7 @@ export class EditarUsuarioComponent implements OnInit {
           'ap_materno': new FormControl(null,[]),
           // 'email': new FormControl(null, [Validators.required, Validators.email]),
           'rol': new FormControl(null, [Validators.required]),
-          'cargo': new FormControl(null, [Validators.required]),
+          'id_cargo': new FormControl(null, [Validators.required]),
           'unidad':new FormControl(null, )
       
     });
@@ -73,7 +73,7 @@ export class EditarUsuarioComponent implements OnInit {
       get ap_materno() { return this.updateUser.get('ap_materno'); }
       // get email() { return this.updateUser.get('email'); }
       get rol() { return this.updateUser.get('rol'); }
-      get cargo() { return this.updateUser.get('cargo'); }
+      get id_cargo() { return this.updateUser.get('id_cargo'); }
       get unidad() { return this.updateUser.get('unidad'); }
 
       updateUserDetails(){
