@@ -88,6 +88,7 @@
                         <div class="col-sm-8">
         
                           <select formControlName="rol" class="form-control"> 
+                            <option [ngValue]="null" disabled>--SELECCIONAR--</option>
                             <option value="ADMIN">ADMIN</option>
                             <option value="FUNCIONARIO">FUNCIONARIO</option>
                             <option value="TÉCNICO">TÉCNICO</option>
@@ -96,6 +97,23 @@
                           </div>
                         </div>
                       </div>
+
+
+
+                      <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group row">
+                      <label for="cargo" class="col-form-label col-sm-4">Cargo:</label>
+                    <div class="col-sm-8">
+    
+                      <select formControlName="cargo" class="form-control">
+                        <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
+                        <option [value]="row.id" *ngFor="let row of cargoList.data">{{row.cargo}}</option>
+                        
+                      </select>
+    
+                      </div>
+                    </div>
+                  </div>
 
 
 <div class="col-xs-6 col-sm-6 col-md-6">

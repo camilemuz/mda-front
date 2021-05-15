@@ -2,9 +2,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { password } from '@rxweb/reactive-form-validators';
+
 
 import { AuthService } from 'src/app/services/auth.service';
+import { CargoRestService } from 'src/app/services/cargo-rest.service';
+import { UserRestService } from 'src/app/services/user-rest.service';
 
 
 
@@ -14,12 +16,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent implements OnInit {
-  [x: string]: any;
+  
     registerForm:any;
-    
-  constructor(private auth:AuthService,
-     private route: Router) {
+    cargoList:any;
+    private url='http://mda-back.test/api';
 
+  constructor(private auth:AuthService, private userRest:UserRestService,private cargoRest:CargoRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute) {
+    http.get(this.url+'/cargo').subscribe((data)=>{
+      console.log(data);
+      this.cargoList=data;
+    });
  
 
     // this.form=formBuilder.group({
@@ -38,9 +44,10 @@ export class CrearUsuarioComponent implements OnInit {
           'nombre': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null,[]),
-          'unidad': new FormControl(null,[]),
           'email': new FormControl(null, [Validators.required, Validators.email]),
-          'rol': new FormControl(null, [Validators.required]),
+          'id_cargo': new FormControl(null, [Validators.required]),
+          'unidad': new FormControl(null,[]),         
+          'rol': new FormControl(null, [Validators.required]),          
           'password': new FormControl(null, [Validators.required, Validators.minLength(5)]), 
           //  'confirma': new FormControl(null, [Validators.required]),         
         }
@@ -56,13 +63,14 @@ export class CrearUsuarioComponent implements OnInit {
       get unidad() { return this.registerForm.get('unidad'); }
       get email() { return this.registerForm.get('email'); }
       get rol() { return this.registerForm.get('rol'); }
+      get id_cargo() { return this.registerForm.get('id_cargo'); }
       get password() { return this.registerForm.get('password'); }
       // get confirma() { return this.registerForm.get('confirma'); }
 
       Register() {
         // console.log("desde controller",this.registerForm);
         this.auth.register(this.registerForm).subscribe(() => {      
-          this.route.navigate(['home/login']);
+          this.router.navigate(['home/login']);
     
         })
         
