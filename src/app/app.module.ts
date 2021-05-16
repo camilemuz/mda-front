@@ -31,6 +31,9 @@ import { CrearSucursalComponent } from './components/admin/configuracion/lugar/s
 import { ListarDptoComponent } from './components/admin/configuracion/lugar/departamento/listar-dpto/listar-dpto.component';
 import { EditarDptoComponent } from './components/admin/configuracion/lugar/departamento/editar-dpto/editar-dpto.component';
 import { CrearDptoComponent } from './components/admin/configuracion/lugar/departamento/crear-dpto/crear-dpto.component';
+import { ListarTicketComponent } from './components/tickets/listar-ticket/listar-ticket.component';
+import { EditarTicketComponent } from './components/tickets/editar-ticket/editar-ticket.component';
+import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ticket.component';
 
 
 
@@ -60,7 +63,10 @@ import { CrearDptoComponent } from './components/admin/configuracion/lugar/depar
     CrearSucursalComponent,
     ListarDptoComponent,
     EditarDptoComponent,
-    CrearDptoComponent
+    CrearDptoComponent,
+    ListarTicketComponent,
+    EditarTicketComponent,
+    CrearTicketComponent
     
     
    
