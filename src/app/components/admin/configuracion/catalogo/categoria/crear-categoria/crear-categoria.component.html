@@ -1,0 +1,63 @@
+<div class="container">
+    <h1>Crear Categoría</h1>
+    <hr>
+
+
+    <form  class="custom-form" [formGroup]="catForm" (ngSubmit)="Register()"  novalidate="">
+ 
+      
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group row">
+                    <label for="cod" class="col-form-label col-sm-4">Código:</label>
+                  <div class="col-sm-8">
+                <input type="text"  formControlName="cod"  class="form-control" placeholder="Cod" >
+
+                <div *ngIf="this.catForm.get('cod').errors && catForm.get('cod').dirty ">
+                                    
+                  <span *ngIf="this.catForm.get('cod').errors?.required">
+                    <font color ="red">El código no puede quedar vacío</font>
+                  </span>
+                  
+                </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group row">
+                    <label for="categoria" class="col-form-label col-sm-4">Nombre de Categoría:</label>
+                  <div class="col-sm-8">
+                    <input type="text"  formControlName="categoria"  class="form-control" placeholder="Categoría" >
+
+                    <div *ngIf="this.catForm.get('categoria').errors && catForm.get('categoria').dirty ">
+                                    
+                      <span *ngIf="this.catForm.get('categoria').errors?.required">
+                        <font color ="red">Categoria no puede quedar vacío</font>
+                      </span>
+                    
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+
+        <div class="row">
+            <div class="update ml-auto mr-auto">
+                    <button   type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;" (click)="Register()" >Guardar</button>
+            </div>
+        </div>
+    
+  
+</form>
+
+
+
+
+    
+</div>
