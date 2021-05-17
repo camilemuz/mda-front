@@ -6,51 +6,46 @@
     <form  class="custom-form" [formGroup]="sopForm" (ngSubmit)="Register()"  novalidate="">
  
       
-        <div class="row">
+      <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group row">
-                    <label for="cod" class="col-form-label col-sm-4">Código:</label>
+                  <label for="id_categorias" class="col-form-label col-sm-4">Tipo de Solicitud:</label>
                   <div class="col-sm-8">
-                <input type="text"  formControlName="cod"  class="form-control" placeholder="Cod" >
-
-                <div *ngIf="this.sopForm.get('cod').errors && sopForm.get('cod').dirty ">
-                                    
-                  <span *ngIf="this.sopForm.get('cod').errors?.required">
-                    <font color ="red">El código no puede quedar vacío</font>
-                  </span>
-                  
-                </div>
-                  </div>
+        
+                    <select formControlName="id_categorias" class="form-control">
+                      <option [ngValue]="null" disabled>--SELECCIONAR CATEGORIA--</option> 
+                      <option [value]="row.id" *ngFor="let row of catList.data">{{row.categoria}}</option>
+                      
+                    </select>
+        
+                    </div>
                 </div>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group row">
-                    <label for="sub_categoria" class="col-form-label col-sm-4">Nombre de Requerimiento:</label>
+                  <label for="id_categorias" class="col-form-label col-sm-4">Requerimiento:</label>
                   <div class="col-sm-8">
-                    <input type="text"  formControlName="sub_categoria"  class="form-control" placeholder="Categoría" >
-
-                    <div *ngIf="this.sopForm.get('sub_categoria').errors && sopForm.get('sub_categoria').dirty ">
-                                    
-                      <span *ngIf="this.sopForm.get('sub_categoria').errors?.required">
-                        <font color ="red">Requerimiento no puede quedar vacío</font>
-                      </span>
-                    
+        
+                    <select formControlName="id_categorias" class="form-control">
+                      <option [ngValue]="null" disabled>--REQUERIMEINTO--</option> 
+                      <option [ngValue]="row.id" *ngFor="let row of tipoList.data">{{row.sub_categoria}}</option>
+                      
+                    </select>
+        
                     </div>
-
-                  </div>
                 </div>
             </div>
 
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group row">
-            <label for="id_categorias" class="col-form-label col-sm-4">Categoria:</label>
+            <label for="nombre_municipio" class="col-form-label col-sm-4">Municipio:</label>
           <div class="col-sm-8">
 
-            <select formControlName="id_categorias" class="form-control">
-              <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
-              <option [value]="row.id" *ngFor="let row of tipoList.data">{{row.categoria}}</option>
+            <select formControlName="nombre_municipio" class="form-control">
+              <option [ngValue]="null" disabled>--MUNICIPIO--</option> 
+              <option [value]="row.id" *ngFor="let row of munList.data">{{row.nombre_municipio}}</option>
               
             </select>
 
@@ -59,7 +54,74 @@
         </div>
             
 
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group row">
+                <label for="nombre_sucursal" class="col-form-label col-sm-4">Sucursal:</label>
+                  <div class="col-sm-8">
+
+                    <select formControlName="nombre_sucursal" class="form-control">
+                      <option [ngValue]="null" disabled>--SUCURSAL--</option> 
+                      <option [value]="row.id" *ngFor="let row of sucList.data">{{row.nombre_sucursal}}</option>
+                
+                    </select>
+
+                  </div>
+            </div>
+          </div>
+
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group row">
+                <label for="nombre_departamento" class="col-form-label col-sm-4">Departamento:</label>
+                  <div class="col-sm-8">
+
+                    <select formControlName="nombre_departamento" class="form-control">
+                      <option [ngValue]="null" disabled>--DEPARTAMENTO--</option> 
+                      <option [value]="row.id" *ngFor="let row of dptoList.data">{{row.nombre_departamento}}</option>
+                
+                    </select>
+
+                  </div>
+            </div>
+          </div> 
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-sm-12 col-md-12"> 
+            <div class="form-group row">
+                <label class="col-sm-2 col-from-label" for="descripcion">Descripción:</label>
+                    <div class="col-sm-9">                     
+                        <textarea class="form-control" id="descripcion" formControlName="descripcion"></textarea>
+                    </div>
+            </div>
+        </div>        
+    </div>
+
+    <div class="row">
+      
+      <!-- <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group row">
+              <label class="col-sm-4 control-label" for="subir">Subir Archivo:</label>
+                  <div class="col-sm-8">                     
+                      <input type="file" Name="subir" />
+                  </div>
+          </div>
+      </div> -->
+
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group row">
+                <label for="interno" class="col-form-label col-sm-4">Interno:</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="interno" id="interno" class="form-control" placeholder="Interno" > 
+                    </div>
+            </div>
         </div>
+
+
+
+    </div>
+
 
 
         <div class="row">

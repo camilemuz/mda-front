@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
   dptoList:any;
   estList:any;
   catList:any;
+  munList:any;
+  sucList:any;
+  
 
   private url='http://mda-back.test/api';
 
@@ -55,19 +58,25 @@ constructor( private sopRest:SoporteRestService,
     console.log(data);
     this.catList=data;
   });
-
-
+  http.get(this.url+'/municipio').subscribe((data)=>{
+    console.log(data);
+    this.munList=data;
+  });
+  http.get(this.url+'/sucursal').subscribe((data)=>{
+    console.log(data);
+    this.sucList=data;
+  });
 
 }
         ngOnInit(): void {
       this.sopForm = new FormGroup({
         'descripcion': new FormControl(null, []),
         'fecha_atencion': new FormControl(null, []),
-        'id_users': new FormControl(null, [Validators.required]),
-        'id_tiporeq': new FormControl(null, [Validators.required]),
+        'id_users': new FormControl(null, []),
+        'id_tiporeq': new FormControl(null, []),
         'id_calificacion': new FormControl(null, []),
         'id_prioridad': new FormControl(null, []),
-        'id_departamento': new FormControl(null, [Validators.required]),
+        'id_departamento': new FormControl(null, []),
         'id_estado': new FormControl(null, []),
         
       }
@@ -91,7 +100,7 @@ constructor( private sopRest:SoporteRestService,
     Register() {
       // console.log("desde controller",this.registerForm);
       this.sopRest.storeReq(this.sopForm).subscribe(() => {      
-        this.router.navigate(['listar-soporte']);
+        this.router.navigate(['listar-tikect']);
   
       })
       

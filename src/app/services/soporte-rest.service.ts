@@ -23,7 +23,7 @@ export class SoporteRestService {
   }
 
   storeReq(form:any): Observable<any> {
-    return this.http.post(this.url+'/usreqer',form.value);
+    return this.http.post(this.url+'/req',form.value);
   }
 
   deleteReq(id:any): Observable<any> {
