@@ -38,7 +38,7 @@ export class EditarMunicipioComponent implements OnInit {
         
         this.updateMunFrom.patchValue({
         'cod': response.data.cod,
-        'nombre_municipio': response.data.nombre_municipio,
+        'municipio': response.data.municipio,
         
         })
       },
@@ -49,7 +49,7 @@ export class EditarMunicipioComponent implements OnInit {
 
     this.updateMunFrom = new FormGroup({
       'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      'nombre_municipio': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'municipio': new FormControl(null, [Validators.required, Validators.minLength(3)]),
          
       
     });
@@ -57,7 +57,7 @@ export class EditarMunicipioComponent implements OnInit {
 
 }
       get cod() { return this.updateMunFrom.get('cod'); }
-      get nombre_municipio() { return this.updateMunFrom.get('nombre_municipio'); }
+      get municipio() { return this.updateMunFrom.get('municipio'); }
      
 
       updateMunDetails(){

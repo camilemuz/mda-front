@@ -26,7 +26,7 @@ export class CrearMunicipioComponent implements OnInit {
           ngOnInit(): void {
         this.reqForm = new FormGroup({
           'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-          'nombre_municipio': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+          'municipio': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           
         }
         ); }
@@ -36,7 +36,7 @@ export class CrearMunicipioComponent implements OnInit {
 
 
       get cod() { return this.reqForm.get('cod'); }
-      get nombre_municipio() { return this.reqForm.get('nombre_municipio'); }
+      get municipio() { return this.reqForm.get('municipio'); }
       
 
       Register() {
