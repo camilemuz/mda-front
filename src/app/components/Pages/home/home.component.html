@@ -9,10 +9,10 @@
       <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group row">
-                  <label for="id_categorias" class="col-form-label col-sm-4">Tipo de Solicitud:</label>
+                  <label for="id_categoria" class="col-form-label col-sm-4">Tipo de Solicitud:</label>
                   <div class="col-sm-8">
         
-                    <select formControlName="id_categorias" class="form-control">
+                    <select formControlName="id_categoria" class="form-control">
                       <option [ngValue]="null" disabled>--SELECCIONAR CATEGORIA--</option> 
                       <option [value]="row.id" *ngFor="let row of catList.data">{{row.categoria}}</option>
                       
@@ -24,12 +24,12 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group row">
-                  <label for="id_categorias" class="col-form-label col-sm-4">Requerimiento:</label>
+                  <label for="id_tiporeq" class="col-form-label col-sm-4">Requerimiento:</label>
                   <div class="col-sm-8">
         
-                    <select formControlName="id_categorias" class="form-control">
+                    <select formControlName="id_tiporeq" class="form-control">
                       <option [ngValue]="null" disabled>--REQUERIMEINTO--</option> 
-                      <option [ngValue]="row.id" *ngFor="let row of tipoList.data">{{row.sub_categoria}}</option>
+                      <option [ngValue]="row.id" *ngFor="let row of tipoList.data">{{row.tiporeq}}</option>
                       
                     </select>
         

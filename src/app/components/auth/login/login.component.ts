@@ -12,6 +12,8 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent implements OnInit {
  
  form:any;
+ serverErrors = [];
+ showPassword = true;
   //emailCrl= new FormControl('',[Validators.required, Validators.email]);
  //passwordCrl= new FormControl('',[Validators.required, Validators.email]);
 
@@ -52,18 +54,27 @@ export class LoginComponent implements OnInit {
       .subscribe((data:any) => {
         this.authService.setToken(data.token);
         this.authService.setUser(data.user);
+        this.authService.getCurrentUser();
+        // localStorage.setItem('token','id');
         // this.router.navigateByUrl('/prueba');
         this.router.navigate(['/home'], { relativeTo: this.route });
+        alert("Bienvenid@");
       },
-      error=>{
-        
-        
+      (error)=>{
+      this.serverErrors=error.error;
+      if  (error=== 'Unauthorized'){
+        error.alert("Correo o password invalido");
+      }
+      localStorage.removeItem('token');
+     
       }
     
       ); 
-      alert("Bienvenid@");
-  }
       
+  }
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
+  }
   
 
 }

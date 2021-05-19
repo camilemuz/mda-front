@@ -13,7 +13,7 @@ import { ListarUsuarioComponent } from './components/admin/usuarios/listar-usuar
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoaderService } from './components/auth/loader.service';
 import { AuthInterceptor } from './components/auth/auth-interceptor.interceptor';
-import { RegistroComponent } from './components/Pages/registro/registro.component';
+import { RegistroComponent } from './components/auth/registro/registro.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { ConfiguracionComponent } from './components/admin/configuracion/configuracion/configuracion.component';
 import { CrearCategoriaComponent } from './components/admin/configuracion/catalogo/categoria/crear-categoria/crear-categoria.component';
@@ -34,8 +34,7 @@ import { CrearDptoComponent } from './components/admin/configuracion/lugar/depar
 import { ListarTicketComponent } from './components/tickets/listar-ticket/listar-ticket.component';
 import { EditarTicketComponent } from './components/tickets/editar-ticket/editar-ticket.component';
 import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ticket.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
+
 
 
 @NgModule({
@@ -77,8 +76,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule
+    
    
   ],
   providers: [

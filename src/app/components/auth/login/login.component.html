@@ -14,15 +14,13 @@
 							<small *ngIf = " form.get('email'). hasError('required') " ><h3>El email es un campo requerido</h3></small>
 						</div>	
 
-						
-						
 						<input type="email"
 						formControlName="email"
 						placeholder="Ej: usuario@epsas.com">
 <!--[formControl]="emailCrl" -->
 
 
-						<div *ngIf="this.form.get('password').errors && form.get('password').dirty ">
+						<div *ngIf="this.form.get('password').errors && form.get('password').dirty " >
 							<small *ngIf="form.get('password').hasError('required')" > <h3>Se necesita la contraseña</h3></small>
 						</div>
 						

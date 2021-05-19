@@ -70,15 +70,16 @@ constructor( private sopRest:SoporteRestService,
 }
         ngOnInit(): void {
       this.sopForm = new FormGroup({
-        'descripcion': new FormControl(null, []),
-        'fecha_atencion': new FormControl(null, []),
+        'descripcion': new FormControl(null, []),        
         'id_users': new FormControl(null, []),
+        'id_categoria': new FormControl(null, []),
         'id_tiporeq': new FormControl(null, []),
-        'id_calificacion': new FormControl(null, []),
-        'id_prioridad': new FormControl(null, []),
+        'id_sucursal': new FormControl(null, []),
+        'id_municipio': new FormControl(null, []),
         'id_departamento': new FormControl(null, []),
-        'id_estado': new FormControl(null, []),
         
+        
+
       }
       ); }
 
@@ -86,15 +87,12 @@ constructor( private sopRest:SoporteRestService,
       
 
 
-    get descripcion() { return this.sopForm.get('descripcion'); }
-    get fecha_atencion() { return this.sopForm.get('fecha_atencion'); }
+    get descripcion() { return this.sopForm.get('descripcion'); }  
     get id_users() { return this.sopForm.get('id_users'); }
-    get id_categorias() { return this.sopForm.get('id_categorias'); }
-    get id_tiporeq() { return this.sopForm.get('id_tiporeq'); }
-    get id_calificacion() { return this.sopForm.get('id_calificacion'); }
-    get id_prioridad() { return this.sopForm.get('id_prioridad'); }
+    get id_categoria() { return this.sopForm.get('id_categoria'); }
+    get id_tiporeq() { return this.sopForm.get('id_tiporeq'); }    
     get id_departamento() { return this.sopForm.get('id_departamento'); }
-    get id_estado() { return this.sopForm.get('id_estado'); }
+    
     
 
     Register() {

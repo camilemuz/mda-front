@@ -29,4 +29,26 @@ export class SoporteRestService {
   deleteReq(id:any): Observable<any> {
     return this.http.delete(this.url+'/req/'+ id);
   }
+
+//ticket
+getTicket(): Observable<any> {
+  return this.http.get(this.url+'/ticket');
+}
+
+editTicket(id: number): Observable<any> {
+  return this.http.get(this.url+'/ticket/'+id);
+}
+
+updateTicket(form:any,id:number): Observable<any> {
+  return this.http.put(this.url +'/ticket/'+ id, form.value);
+}
+
+storeTicket(form:any): Observable<any> {
+  return this.http.post(this.url+'/ticket',form.value);
+}
+
+deleteTicket(id:number): Observable<any> {
+  return this.http.delete(this.url+'/ticket/'+ id);
+}
+
 }
