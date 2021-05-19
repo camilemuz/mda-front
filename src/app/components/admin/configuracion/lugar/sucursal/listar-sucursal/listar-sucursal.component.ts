@@ -13,7 +13,7 @@ export class ListarSucursalComponent implements OnInit {
 
   private url='http://mda-back.test/api';
   SucursalList:any;
-  
+  munList:any;
   
 
 
@@ -22,10 +22,23 @@ export class ListarSucursalComponent implements OnInit {
     private formBuilder:FormBuilder,  
     private router: Router, 
     private route: ActivatedRoute){
-    http.get(this.url+'/sucursal').subscribe((data)=>{
-      console.log(data);
+      http.get(this.url+'/municipio').subscribe((data)=>{
+        console.log(data);
+        this.munList=data;
+      });
+    http.get(this.url+'/sucursal').subscribe((data: any)=>{
+      
+      data.data.forEach( (value: any) => {
+        this.munList.data.forEach( (valmuni:any) => {
+          if(value.id_municipio === valmuni.id){
+            value.municipio = valmuni.municipio;
+          }
+        })
+      })
       this.SucursalList=data;
+      console.log(this.SucursalList);
     });
+    
   
  
 }

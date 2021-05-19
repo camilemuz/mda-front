@@ -20,14 +20,14 @@ export class CrearSucursalComponent implements OnInit {
 constructor( private luRest:LugarRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute) {
   http.get(this.url+'/municipio').subscribe((data)=>{
     console.log(data);
-    this.munList=data;
+    this.munList = data;
     });
  
 }
         ngOnInit(): void {
       this.sucForm = new FormGroup({
         'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        'nombre_sucursal': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        'sucursal': new FormControl(null, [Validators.required, Validators.minLength(3)]),
         'id_municipio': new FormControl(null, [Validators.required, Validators.minLength(3)]),
         
       }
@@ -38,12 +38,12 @@ constructor( private luRest:LugarRestService, http:HttpClient, private formBuild
 
 
     get cod() { return this.sucForm.get('cod'); }
-    get nombre_sucursal() { return this.sucForm.get('nombre_sucursal'); }
+    get sucursal() { return this.sucForm.get('sucursal'); }
     get id_municipio() { return this.sucForm.get('id_municipio'); }
     
 
     Register() {
-      // console.log("desde controller",this.registerForm);
+      // console.log("desde controller",this.sucForm);
       this.luRest.storeSucursal(this.sucForm).subscribe(() => {      
         this.router.navigate(['listar-sucursal']);
   

@@ -39,7 +39,7 @@ export class EditarSucursalComponent implements OnInit {
         
         this.updateSucFrom.patchValue({
         'cod': response.data.cod,
-        'nombre_sucursal': response.data.nombre_sucursal,
+        'sucursal': response.data.sucursal,
         'id_municipio': response.data.id_municipio,
         
         })
@@ -51,7 +51,7 @@ export class EditarSucursalComponent implements OnInit {
 
     this.updateSucFrom = new FormGroup({
       'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      'nombre_sucursal': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'sucursal': new FormControl(null, [Validators.required, Validators.minLength(3)]),
       'id_municipio': new FormControl(null, [Validators.required, Validators.minLength(3)]),
          
       
@@ -60,7 +60,7 @@ export class EditarSucursalComponent implements OnInit {
 
 }
       get cod() { return this.updateSucFrom.get('cod'); }
-      get nombre_sucursal() { return this.updateSucFrom.get('nombre_sucursal'); }
+      get sucursal() { return this.updateSucFrom.get('sucursal'); }
       get id_municipio() { return this.updateSucFrom.get('id_municipio'); }
      
 
