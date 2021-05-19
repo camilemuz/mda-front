@@ -38,7 +38,7 @@ export class EditarDptoComponent implements OnInit {
         
         this.updateDptoFrom.patchValue({
         'cod': response.data.cod,
-        'nombre_departamento': response.data.nombre_departamento,
+        'departamento': response.data.departamento,
         
         })
       },
@@ -49,7 +49,7 @@ export class EditarDptoComponent implements OnInit {
 
     this.updateDptoFrom = new FormGroup({
       'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      'nombre_departamento': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'departamento': new FormControl(null, [Validators.required, Validators.minLength(3)]),
          
       
     });
@@ -57,7 +57,7 @@ export class EditarDptoComponent implements OnInit {
 
 }
       get cod() { return this.updateDptoFrom.get('cod'); }
-      get nombre_departamento() { return this.updateDptoFrom.get('nombre_departamento'); }
+      get departamento() { return this.updateDptoFrom.get('departamento'); }
      
 
       updateDptoetails(){

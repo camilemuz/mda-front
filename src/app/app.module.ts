@@ -34,7 +34,8 @@ import { CrearDptoComponent } from './components/admin/configuracion/lugar/depar
 import { ListarTicketComponent } from './components/tickets/listar-ticket/listar-ticket.component';
 import { EditarTicketComponent } from './components/tickets/editar-ticket/editar-ticket.component';
 import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ticket.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ti
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-   
+    BrowserAnimationsModule,
+    MatButtonModule
    
   ],
   providers: [

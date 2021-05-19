@@ -31,7 +31,7 @@ constructor(
         ngOnInit(): void {
       this.dptoForm = new FormGroup({
         'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        'nombre_departamento': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        'departamento': new FormControl(null, [Validators.required, Validators.minLength(3)]),
         
       }
       ); }
@@ -41,7 +41,7 @@ constructor(
 
 
     get cod() { return this.dptoForm.get('cod'); }
-    get nombre_departamento() { return this.dptoForm.get('nombre_departamento'); }
+    get departamento() { return this.dptoForm.get('departamento'); }
     
 
     Register() {
