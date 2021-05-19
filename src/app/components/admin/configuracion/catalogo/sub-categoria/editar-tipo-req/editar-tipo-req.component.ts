@@ -38,8 +38,8 @@ export class EditarTipoReqComponent implements OnInit {
         
         this.updateReqFrom.patchValue({
         'cod': response.data.cod,
-        'sub_categoria': response.data.sub_categoria,
-        'id_categorias': response.data.id_categorias
+        'tiporeq': response.data.tiporeq,
+        'id_categoria': response.data.id_categoria
         
         })
       },
@@ -50,8 +50,8 @@ export class EditarTipoReqComponent implements OnInit {
 
     this.updateReqFrom = new FormGroup({
       'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      'sub_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      'id_categorias': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'tiporeq': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'id_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
          
       
     });
@@ -59,8 +59,8 @@ export class EditarTipoReqComponent implements OnInit {
 
 }
       get cod() { return this.updateReqFrom.get('cod'); }
-      get sub_categoria() { return this.updateReqFrom.get('sub_categoria'); }
-      get id_categorias() { return this.updateReqFrom.get('id_categorias'); }
+      get tiporeq() { return this.updateReqFrom.get('tiporeq'); }
+      get id_categoria() { return this.updateReqFrom.get('id_categoria'); }
      
 
       updateCatDetails(){

@@ -16,13 +16,24 @@ export class ListarTipoReqComponent implements OnInit {
   CatList:any;
   
   constructor(private CatRest:CatalogoRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute){
-    http.get(this.url+'/tipo').subscribe((data)=>{
-      console.log(data);
-      this.ReqList=data;
-    });
+    
     http.get(this.url+'/cat').subscribe((data)=>{
       console.log(data);
       this.CatList=data;
+    });
+    http.get(this.url+'/tipo').subscribe((data:any)=>{
+
+      data.data.forEach( (value: any) => {
+        this.CatList.data.forEach( (valcat:any) => {
+          if(value.id_categoria === valcat.id){
+            value.categoria = valcat.categoria;
+          }
+        })
+      })
+      // console.log(data);
+      // this.ReqList=data;
+      this.ReqList=data;
+      console.log(this.ReqList);
     });
  
 }

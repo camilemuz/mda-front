@@ -65,7 +65,7 @@ export class EditarCategoriaComponent implements OnInit {
         this.catRest.updateCategoria(this.updateCatFrom,id).subscribe(
           (response) => {
             console.log(response),
-            this.router.navigate(['/usuario'])
+            this.router.navigate(['/listar-categoria'])
           },
           (error) => console.log(error),
           () => console.log('completed')

@@ -32,8 +32,8 @@ constructor( private catRest:CatalogoRestService, http:HttpClient, private formB
         ngOnInit(): void {
       this.reqForm = new FormGroup({
         'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        'sub_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        'id_categorias': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        'tiporeq': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        'id_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
         
       }
       ); }
@@ -43,8 +43,8 @@ constructor( private catRest:CatalogoRestService, http:HttpClient, private formB
 
 
     get cod() { return this.reqForm.get('cod'); }
-    get sub_categoria() { return this.reqForm.get('sub_categoria'); }
-    get id_categorias() { return this.reqForm.get('id_categorias'); }
+    get tiporeq() { return this.reqForm.get('tiporeq'); }
+    get id_categoria() { return this.reqForm.get('id_categoria'); }
     
 
     Register() {
