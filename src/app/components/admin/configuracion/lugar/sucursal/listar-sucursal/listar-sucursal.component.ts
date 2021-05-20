@@ -31,7 +31,7 @@ export class ListarSucursalComponent implements OnInit {
       data.data.forEach( (value: any) => {
         this.munList.data.forEach( (valmuni:any) => {
           if(value.id_municipio === valmuni.id){
-            value.municipio = valmuni.municipio;
+            value.id_municipio = valmuni.municipio;
           }
         })
       })

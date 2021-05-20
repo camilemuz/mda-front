@@ -49,7 +49,7 @@ export class AuthService {
 
  
   getCurrentUser(){
-    let user_string=localStorage.getItem('currentUser');
+    let user_string:any=localStorage.getItem('currentUser');
     let user= JSON.parse(user_string);
     return user;
     }

@@ -12,9 +12,11 @@
                   <label for="id_categoria" class="col-form-label col-sm-4">Tipo de Solicitud:</label>
                   <div class="col-sm-8">
         
-                    <select formControlName="id_categoria" class="form-control">
-                      <option [ngValue]="null" disabled>--SELECCIONAR CATEGORIA--</option> 
+                    <select  formControlName="id_categoria" class="form-control">
+                      <option [ngValue]="null" disabled>----SELECCIONAR CATEGORIA----</option> 
                       <option [value]="row.id" *ngFor="let row of catList.data">{{row.categoria}}</option>
+                    
+
                       
                     </select>
         
@@ -25,11 +27,11 @@
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group row">
                   <label for="id_tiporeq" class="col-form-label col-sm-4">Requerimiento:</label>
-                  <div class="col-sm-8">
+                  <div   class="col-sm-8">
         
                     <select formControlName="id_tiporeq" class="form-control">
-                      <option [ngValue]="null" disabled>--REQUERIMEINTO--</option> 
-                      <option [ngValue]="row.id" *ngFor="let row of tipoList.data">{{row.tiporeq}}</option>
+                      <option [ngValue]="null" disabled>----SELECCIONE REQUERIMEINTO----</option> 
+                      <option [value]="row.id" *ngFor="let row of tipoList.data">{{row.tiporeq}}</option>
                       
                     </select>
         
@@ -40,12 +42,12 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6">
               <div class="form-group row">
-            <label for="nombre_municipio" class="col-form-label col-sm-4">Municipio:</label>
+            <label for="municipio" class="col-form-label col-sm-4">Municipio:</label>
           <div class="col-sm-8">
 
-            <select formControlName="nombre_municipio" class="form-control">
-              <option [ngValue]="null" disabled>--MUNICIPIO--</option> 
-              <option [value]="row.id" *ngFor="let row of munList.data">{{row.nombre_municipio}}</option>
+            <select formControlName="municipio" class="form-control">
+              <option [ngValue]="null" disabled>----SELECCIONA MUNICIPIO----</option> 
+              <option [value]="row.id" *ngFor="let row of munList.data">{{row.municipio}}</option>
               
             </select>
 
@@ -56,12 +58,12 @@
 
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
-                <label for="nombre_sucursal" class="col-form-label col-sm-4">Sucursal:</label>
+                <label for="sucursal" class="col-form-label col-sm-4">Sucursal:</label>
                   <div class="col-sm-8">
 
-                    <select formControlName="nombre_sucursal" class="form-control">
-                      <option [ngValue]="null" disabled>--SUCURSAL--</option> 
-                      <option [value]="row.id" *ngFor="let row of sucList.data">{{row.nombre_sucursal}}</option>
+                    <select formControlName="sucursal" class="form-control">
+                      <option [ngValue]="null" disabled>----SELECCIONA SUCURSAL----</option> 
+                      <option [value]="row.id" *ngFor="let row of sucList.data">{{row.sucursal}}</option>
                 
                     </select>
 
@@ -72,12 +74,12 @@
 
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group row">
-                <label for="nombre_departamento" class="col-form-label col-sm-4">Departamento:</label>
+                <label for="departamento" class="col-form-label col-sm-4">Departamento:</label>
                   <div class="col-sm-8">
 
-                    <select formControlName="nombre_departamento" class="form-control">
-                      <option [ngValue]="null" disabled>--DEPARTAMENTO--</option> 
-                      <option [value]="row.id" *ngFor="let row of dptoList.data">{{row.nombre_departamento}}</option>
+                    <select formControlName="departamento" class="form-control">
+                      <option [ngValue]="null" disabled>--SELECCIONA DEPARTAMENTO--</option> 
+                      <option [value]="row.id" *ngFor="let row of dptoList.data">{{row.departamento}}</option>
                 
                     </select>
 

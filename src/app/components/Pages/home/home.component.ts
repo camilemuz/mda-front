@@ -104,6 +104,12 @@ constructor( private sopRest:SoporteRestService,
       
 
      }
+
+     cambioCategoria(){
+      //Aqui va tu logica de consulta a la BD
+  
+      this.id_categoria === this.id_tiporeq;
+    }
 }
 
     
