@@ -3,7 +3,7 @@
     <hr>
 
 
-    <form  class="custom-form" [formGroup]="sopForm" (ngSubmit)="Register()"  novalidate="">
+    <form  class="custom-form" [formGroup]="sopForm" (ngSubmit)="Register()"  >
  
       
       <div class="row">
@@ -13,7 +13,7 @@
                   <div class="col-sm-8">
         
                     <select  formControlName="id_categoria" class="form-control">
-                      <option [ngValue]="null" disabled>----SELECCIONAR CATEGORIA----</option> 
+                      <option [ngValue]="null" disabled>----Seleccione una opción----</option> 
                       <option [value]="row.id" *ngFor="let row of catList.data">{{row.categoria}}</option>
                     
 
@@ -30,7 +30,7 @@
                   <div   class="col-sm-8">
         
                     <select formControlName="id_tiporeq" class="form-control">
-                      <option [ngValue]="null" disabled>----SELECCIONE REQUERIMEINTO----</option> 
+                      <option [ngValue]="null" disabled>----Seleccione una opción----</option> 
                       <option [value]="row.id" *ngFor="let row of tipoList.data">{{row.tiporeq}}</option>
                       
                     </select>
@@ -46,7 +46,7 @@
           <div class="col-sm-8">
 
             <select formControlName="municipio" class="form-control">
-              <option [ngValue]="null" disabled>----SELECCIONA MUNICIPIO----</option> 
+              <option [ngValue]="null" disabled>----Seleccione una opción----</option> 
               <option [value]="row.id" *ngFor="let row of munList.data">{{row.municipio}}</option>
               
             </select>
@@ -62,7 +62,7 @@
                   <div class="col-sm-8">
 
                     <select formControlName="sucursal" class="form-control">
-                      <option [ngValue]="null" disabled>----SELECCIONA SUCURSAL----</option> 
+                      <option [ngValue]="null" disabled>----Seleccione una opción----</option> 
                       <option [value]="row.id" *ngFor="let row of sucList.data">{{row.sucursal}}</option>
                 
                     </select>
@@ -78,7 +78,7 @@
                   <div class="col-sm-8">
 
                     <select formControlName="departamento" class="form-control">
-                      <option [ngValue]="null" disabled>--SELECCIONA DEPARTAMENTO--</option> 
+                      <option [ngValue]="null" disabled>----Seleccione una opción----</option> 
                       <option [value]="row.id" *ngFor="let row of dptoList.data">{{row.departamento}}</option>
                 
                     </select>
@@ -94,7 +94,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-from-label" for="descripcion">Descripción:</label>
                     <div class="col-sm-9">                     
-                        <textarea class="form-control" id="descripcion" formControlName="descripcion"></textarea>
+                        <textarea class="form-control"  formControlName="descripcion"></textarea>
                     </div>
             </div>
         </div>        
@@ -115,12 +115,19 @@
             <div class="form-group row">
                 <label for="interno" class="col-form-label col-sm-4">Interno:</label>
                     <div class="col-sm-8">
-                        <input type="text" formControlName="interno" id="interno" class="form-control" placeholder="Interno" > 
+                        <input type="text" formControlName="interno"  class="form-control" placeholder="Interno" > 
                     </div>
             </div>
         </div>
 
-
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group row">
+              <label for="id_user" class="col-form-label col-sm-4">Usuario:</label>
+                  <div class="col-sm-8">
+                      <input type="text" formControlName="id_user"  class="form-control" placeholder="Usuario" > 
+                  </div>
+          </div>
+      </div>
 
     </div>
 

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   munList:any;
   sucList:any;
   
+  dataUser:any;
 
   private url='http://mda-back.test/api';
 
@@ -30,6 +31,11 @@ constructor( private sopRest:SoporteRestService,
   private formBuilder: FormBuilder, 
   private router: Router, 
   private route: ActivatedRoute) {
+
+    var user:any=localStorage.getItem('currentUser');
+    this.dataUser=JSON.parse(user);
+    console.log('user',user,this.dataUser);
+
   http.get(this.url+'/users').subscribe((data)=>{
     console.log(data);
     this.userList=data;
@@ -65,33 +71,47 @@ constructor( private sopRest:SoporteRestService,
   http.get(this.url+'/sucursal').subscribe((data)=>{
     console.log(data);
     this.sucList=data;
+
+    console.log('rrrr',this.dataUser.nombre);
+    
+    this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
+  
   });
 
+  
+ 
+
+
+
+      
+
+    
 }
         ngOnInit(): void {
       this.sopForm = new FormGroup({
         'descripcion': new FormControl(null, []),        
-        'id_users': new FormControl(null, []),
+        'id_user': new FormControl(null, []),
         'id_categoria': new FormControl(null, []),
         'id_tiporeq': new FormControl(null, []),
         'id_sucursal': new FormControl(null, []),
         'id_municipio': new FormControl(null, []),
         'id_departamento': new FormControl(null, []),
         
-        
 
-      }
-      ); }
-
-     
+      }      
+      ); 
+  
       
+    } 
 
+    
 
     get descripcion() { return this.sopForm.get('descripcion'); }  
-    get id_users() { return this.sopForm.get('id_users'); }
+   
     get id_categoria() { return this.sopForm.get('id_categoria'); }
     get id_tiporeq() { return this.sopForm.get('id_tiporeq'); }    
     get id_departamento() { return this.sopForm.get('id_departamento'); }
+    get id_user() { return this.sopForm.get('id_user'); }
     
     
 
@@ -105,11 +125,7 @@ constructor( private sopRest:SoporteRestService,
 
      }
 
-     cambioCategoria(){
-      //Aqui va tu logica de consulta a la BD
-  
-      this.id_categoria === this.id_tiporeq;
-    }
+    
 }
 
     

@@ -55,6 +55,9 @@ export class LugarRestService {
   deleteSucursal(id:any): Observable<any> {
     return this.http.delete(this.url+'/sucursal/'+ id);
   }
+  filtroSucursal(id:number):Observable<any>{
+    return this.http.get(this.url+'/sucursal/'+id);
+  }
 
 
 //Departamentos
