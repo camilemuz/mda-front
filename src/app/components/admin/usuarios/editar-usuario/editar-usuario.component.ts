@@ -17,6 +17,7 @@ export class EditarUsuarioComponent implements OnInit {
   serverErrors = [];
   userList:any;
   cargoList:any;
+  rolList:any;
   @Input() data: any;
 
   private url='http://mda-back.test/api';
@@ -29,6 +30,10 @@ export class EditarUsuarioComponent implements OnInit {
       http.get(this.url+'/cargo').subscribe((data)=>{
         console.log(data);
         this.cargoList=data;
+      });
+      http.get(this.url+'/rol').subscribe((data)=>{
+        console.log(data);
+        this.rolList=data;
       });
      }
 
@@ -44,8 +49,7 @@ export class EditarUsuarioComponent implements OnInit {
         'nombre': response.data.nombre,
         'ap_paterno': response.data.ap_paterno,
         'ap_materno': response.data.ap_materno,
-        'unidad':response.data.unidad,
-        'rol':response.data.rol,
+        'id_rol':response.data.id_rol,
         "id_cargo":response.data.id_cargo
         // 'email':response.data.email
         })
@@ -60,9 +64,9 @@ export class EditarUsuarioComponent implements OnInit {
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null,[]),
           // 'email': new FormControl(null, [Validators.required, Validators.email]),
-          'rol': new FormControl(null, [Validators.required]),
+          'id_rol': new FormControl(null, [Validators.required]),
           'id_cargo': new FormControl(null, [Validators.required]),
-          'unidad':new FormControl(null, )
+         
       
     });
 
@@ -72,16 +76,15 @@ export class EditarUsuarioComponent implements OnInit {
       get ap_paterno() { return this.updateUser.get('ap_paterno'); }
       get ap_materno() { return this.updateUser.get('ap_materno'); }
       // get email() { return this.updateUser.get('email'); }
-      get rol() { return this.updateUser.get('rol'); }
+      get id_rol() { return this.updateUser.get('id_rol'); }
       get id_cargo() { return this.updateUser.get('id_cargo'); }
-      get unidad() { return this.updateUser.get('unidad'); }
 
       updateUserDetails(){
         let id = this.route.snapshot.params.id;
         this.userRest.updateUser(this.updateUser,id).subscribe(
           (response) => {
             console.log(response),
-            this.router.navigate(['/usuario'])
+            this.router.navigate(['/listar-usuario'])
           },
           (error) => console.log(error),
           () => console.log('completed')

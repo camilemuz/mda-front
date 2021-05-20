@@ -19,12 +19,17 @@ export class CrearUsuarioComponent implements OnInit {
   
     registerForm:any;
     cargoList:any;
+    rolList:any;
     private url='http://mda-back.test/api';
 
   constructor(private auth:AuthService, private userRest:UserRestService,private cargoRest:CargoRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute) {
     http.get(this.url+'/cargo').subscribe((data)=>{
       console.log(data);
       this.cargoList=data;
+    });
+    http.get(this.url+'/rol').subscribe((data)=>{
+      console.log(data);
+      this.rolList=data;
     });
  
 
@@ -45,10 +50,9 @@ export class CrearUsuarioComponent implements OnInit {
           'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
           'ap_materno': new FormControl(null,[]),
           'email': new FormControl(null, [Validators.required, Validators.email]),
-          'id_cargo': new FormControl(null, [Validators.required]),
-          'unidad': new FormControl(null,[]),         
-          'rol': new FormControl(null, [Validators.required]),          
-          'password': new FormControl(null, [Validators.required, Validators.minLength(5)]), 
+          'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+          'id_cargo': new FormControl(null, [Validators.required]),         
+          'id_rol': new FormControl(null, [Validators.required]),          
           //  'confirma': new FormControl(null, [Validators.required]),         
         }
         ); }
@@ -62,15 +66,16 @@ export class CrearUsuarioComponent implements OnInit {
       get ap_materno() { return this.registerForm.get('ap_materno'); }
       get unidad() { return this.registerForm.get('unidad'); }
       get email() { return this.registerForm.get('email'); }
-      get rol() { return this.registerForm.get('rol'); }
-      get id_cargo() { return this.registerForm.get('id_cargo'); }
       get password() { return this.registerForm.get('password'); }
+      get id_rol() { return this.registerForm.get('id_rol'); }
+      get id_cargo() { return this.registerForm.get('id_cargo'); }
+      
       // get confirma() { return this.registerForm.get('confirma'); }
 
       Register() {
         // console.log("desde controller",this.registerForm);
         this.auth.register(this.registerForm).subscribe(() => {      
-          this.router.navigate(['home/login']);
+          this.router.navigate(['listar-usuario']);
     
         })
         
