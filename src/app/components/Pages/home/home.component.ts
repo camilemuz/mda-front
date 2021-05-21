@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
 import { SoporteRestService } from 'src/app/services/soporte-rest.service';
 
 @Component({
@@ -12,23 +13,25 @@ import { SoporteRestService } from 'src/app/services/soporte-rest.service';
 export class HomeComponent implements OnInit {
   sopForm:any;
   
-  userList:any;
-  tipoList:any;
-  calList:any;
- prioList:any;
-  dptoList:any;
-  estList:any;
-  catList:any;
-  munList:any;
-  sucList:any;
+  userList:any[]=[];
+  tipoList:any[]=[];
+  calList:any[]=[];
+ prioList:any[]=[];
+  dptoList:any[]=[];
+  estList:any[]=[];
+  catList:any[]=[];
+  munList:any[]=[];
+  sucList:any[]=[];
   
   
   dataUser:any;
 
   private url='http://mda-back.test/api';
+ 
 
-constructor( private sopRest:SoporteRestService, 
-  http:HttpClient, 
+constructor( sopRest:SoporteRestService,
+  private comunRest:ComuRestService, 
+ public http:HttpClient, 
   private formBuilder: FormBuilder, 
   private router: Router, 
   private route: ActivatedRoute) {
@@ -36,51 +39,56 @@ constructor( private sopRest:SoporteRestService,
     var user:any=localStorage.getItem('currentUser');
     this.dataUser=JSON.parse(user);
     console.log('user',user,this.dataUser);
-
-  http.get(this.url+'/users').subscribe((data)=>{
+    this.comunRest.get('/users').subscribe((data)=>{
     console.log(data);
-    this.userList=data;
+    this.userList=data.data;
   });
-  http.get(this.url+'/tipo').subscribe((data)=>{
+  this.comunRest.get('/tipo').subscribe((data)=>{
     console.log(data);
-    this.tipoList=data;
+    this.tipoList=data.data;
   });
-  http.get(this.url+'/q').subscribe((data)=>{
+  this.comunRest.get('/q').subscribe((data)=>{
     console.log(data);
-    this.calList=data;
+    this.calList=data.data;
   });
-  http.get(this.url+'/prioridad').subscribe((data)=>{
+  this.comunRest.get('/prioridad').subscribe((data)=>{
     console.log(data);
-    this.prioList=data;
+    this.prioList=data.data;
   });
-  http.get(this.url+'/dpto').subscribe((data)=>{
+  this.comunRest.get('/dpto').subscribe((data)=>{
     console.log(data);
-    this.dptoList=data;
+    this.dptoList=data.data;
   });
-  http.get(this.url+'/estado').subscribe((data)=>{
+  this.comunRest.get('/estado').subscribe((data)=>{
     console.log(data);
-    this.estList=data;
+    this.estList=data.data;
   });
-  http.get(this.url+'/cat').subscribe((data)=>{
+  this.comunRest.get('/cat').subscribe((data)=>{
     console.log(data);
-    this.catList=data;
+    this.catList=data.data;
   });
-  http.get(this.url+'/municipio').subscribe((data)=>{
+  this.comunRest.get('/municipio').subscribe((data)=>{
     console.log(data);
-    this.munList=data;
+    this.munList=data.data;
+    // this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
   });
  
-  http.get(this.url+'/sucursal').subscribe((data)=>{
-    console.log(data);
-    this.sucList=data;
+  // http.get(this.url+'/sucursal').subscribe((data)=>{
+  //   console.log(data);
+  //   this.sucList=data;
 
     // console.log('rrrr',this.dataUser.nombre);
     
-    this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
+   
   
-  });
+  // });
 
-  
+  // http.get(this.url+'/filtro').subscribe((data)=>{
+  //   console.log(data);
+  //   this.sucList=data;
+
+  // });
+
  
 
 
@@ -114,17 +122,35 @@ constructor( private sopRest:SoporteRestService,
     get id_user() { return this.sopForm.get('id_user'); }
     get interno() { return this.sopForm.get('interno'); }
     
+
     
     
 
     Register() {
-       console.log("desde controller",this.sopForm);
-      this.sopRest.storeReq(this.sopForm).subscribe(() => {      
-        this.router.navigate(['listar-tikect']);
+      //  console.log("desde controller",this.sopForm);
+      // this.sopRest.storeReq(this.sopForm).subscribe(() => {      
+
+      //   this.router.navigate(['listar-ticket']);
   
-      })
+      // })
       
 
+     }
+
+     filtroChange(e:any){
+       console.log('aaaa?',e.target.value);
+       if(e !== undefined){
+        this.comunRest.get('/filtro/'+e.target.value).subscribe(resp => {
+          console.log('respo', resp);
+          this.sucList=resp.data;
+          
+        }, error=>{
+          console.log('erro', error);
+          
+        })
+       }
+       
+       
      }
 
     

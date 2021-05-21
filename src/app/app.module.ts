@@ -80,7 +80,7 @@ import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ti
    
   ],
   providers: [
-    AuthService,
+    AuthService,    
     LoaderService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
 
