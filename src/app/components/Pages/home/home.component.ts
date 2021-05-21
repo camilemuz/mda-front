@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   munList:any;
   sucList:any;
   
+  
   dataUser:any;
 
   private url='http://mda-back.test/api';
@@ -68,11 +69,12 @@ constructor( private sopRest:SoporteRestService,
     console.log(data);
     this.munList=data;
   });
+ 
   http.get(this.url+'/sucursal').subscribe((data)=>{
     console.log(data);
     this.sucList=data;
 
-    console.log('rrrr',this.dataUser.nombre);
+    // console.log('rrrr',this.dataUser.nombre);
     
     this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
   
@@ -89,13 +91,13 @@ constructor( private sopRest:SoporteRestService,
 }
         ngOnInit(): void {
       this.sopForm = new FormGroup({
-        'descripcion': new FormControl(null, []),        
+        'descripcion': new FormControl(null, []),  
+        'interno': new FormControl(null, []),      
         'id_user': new FormControl(null, []),
-        'id_categoria': new FormControl(null, []),
         'id_tiporeq': new FormControl(null, []),
-        'id_sucursal': new FormControl(null, []),
-        'id_municipio': new FormControl(null, []),
         'id_departamento': new FormControl(null, []),
+        
+        
         
 
       }      
@@ -107,16 +109,16 @@ constructor( private sopRest:SoporteRestService,
     
 
     get descripcion() { return this.sopForm.get('descripcion'); }  
-   
-    get id_categoria() { return this.sopForm.get('id_categoria'); }
     get id_tiporeq() { return this.sopForm.get('id_tiporeq'); }    
     get id_departamento() { return this.sopForm.get('id_departamento'); }
     get id_user() { return this.sopForm.get('id_user'); }
+    get interno() { return this.sopForm.get('interno'); }
+    
     
     
 
     Register() {
-      // console.log("desde controller",this.registerForm);
+       console.log("desde controller",this.sopForm);
       this.sopRest.storeReq(this.sopForm).subscribe(() => {      
         this.router.navigate(['listar-tikect']);
   

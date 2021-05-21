@@ -18,7 +18,7 @@ export class SoporteRestService {
     return this.http.get(this.url+'/req/'+id);
   }
 
-  updateReq(form:any,id:any): Observable<any> {
+  updateReq(form:any,id:number): Observable<any> {
     return this.http.put(this.url +'/req/'+ id, form.value);
   }
 
@@ -26,7 +26,7 @@ export class SoporteRestService {
     return this.http.post(this.url+'/req',form.value);
   }
 
-  deleteReq(id:any): Observable<any> {
+  deleteReq(id:number): Observable<any> {
     return this.http.delete(this.url+'/req/'+ id);
   }
 
