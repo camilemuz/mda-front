@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
   private url='http://mda-back.test/api';
  
 
-constructor( sopRest:SoporteRestService,
+constructor(
+  private sopRest:SoporteRestService,
   private comunRest:ComuRestService, 
  public http:HttpClient, 
   private formBuilder: FormBuilder, 
@@ -38,8 +39,8 @@ constructor( sopRest:SoporteRestService,
 
     var user:any=localStorage.getItem('currentUser');
     this.dataUser=JSON.parse(user);
-    console.log('user',user,this.dataUser);
-    this.comunRest.get('/users').subscribe((data)=>{
+    console.log('users',user,this.dataUser);
+    this.comunRest.get('/user').subscribe((data)=>{
     console.log(data);
     this.userList=data.data;
   });
@@ -70,7 +71,7 @@ constructor( sopRest:SoporteRestService,
   this.comunRest.get('/municipio').subscribe((data)=>{
     console.log(data);
     this.munList=data.data;
-    // this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
+    this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
   });
  
   // http.get(this.url+'/sucursal').subscribe((data)=>{
@@ -127,12 +128,12 @@ constructor( sopRest:SoporteRestService,
     
 
     Register() {
-      //  console.log("desde controller",this.sopForm);
-      // this.sopRest.storeReq(this.sopForm).subscribe(() => {      
+       console.log("desde controller",this.sopForm);
+      this.sopRest.storeReq(this.sopForm).subscribe(() => {      
 
-      //   this.router.navigate(['listar-ticket']);
+        this.router.navigate(['listar-ticket']);
   
-      // })
+      })
       
 
      }
@@ -144,6 +145,7 @@ constructor( sopRest:SoporteRestService,
           console.log('respo', resp);
           this.sucList=resp.data;
           
+          
         }, error=>{
           console.log('erro', error);
           
@@ -152,6 +154,22 @@ constructor( sopRest:SoporteRestService,
        
        
      }
+
+     filtroChangeCat(c:any){
+      console.log('bbbbb',c.target.value);
+      
+       this.comunRest.get('/filtrocat/'+c.target.value).subscribe(respo => {
+         console.log('respo', respo);
+         this.tipoList=respo.data;
+         
+       }, error=>{
+         console.log('erro', error);
+         
+       })
+      
+      
+      
+    }
 
     
 }

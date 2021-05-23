@@ -7,9 +7,7 @@ import { Observable } from "rxjs";
   })
   export class ComuRestService {
     private url='http://mda-back.test/api';
-    municipios: Array<{id: number, cod: string, nombre_municipio: string}> = [];
-    sucursales: Array<{id: number, cod: string, nombre_sucursal: number, id_municipio: number}> = [];
-    departamentos: Array<{id: number, cod: string, nombre_departamento: string}> = [];
+   
     constructor(private http: HttpClient) { }
   
   
@@ -18,69 +16,21 @@ import { Observable } from "rxjs";
       return this.http.get(this.url+url);
     }
     
-    editMunicipio(id: number): Observable<any> {
-      return this.http.get(this.url+'/municipio/'+id);
+    edit(id: number): Observable<any> {
+      return this.http.get(this.url+id);
     }
   
-    updateMunicipio(form:any,id:any): Observable<any> {
-      return this.http.put(this.url +'/municipio/'+ id, form.value);
+    update(form:any,id:any): Observable<any> {
+      return this.http.put(this.url + id, form.value);
     }
   
-    storeMunicipio(form:any): Observable<any> {
-      return this.http.post(this.url+'/municipio',form.value);
+    store(form:any): Observable<any> {
+      return this.http.post(this.url,form.value);
     }
   
-    deleteMunicipio(id:any): Observable<any> {
-      return this.http.delete(this.url+'/municipio/'+ id);
+    delete(id:number): Observable<any> {
+      return this.http.delete(this.url+ id);
     }
   
-  
-  //Sucursales
-    getSucursal(): Observable<any> {
-      return this.http.get(this.url+'/sucursal');
-    }
-  
-    editSucursal(id: number): Observable<any> {
-      return this.http.get(this.url+'/sucursal/'+id);
-    }
-  
-    updateSucursal(form:any,id:any): Observable<any> {
-      return this.http.put(this.url +'/sucursal/'+ id, form.value);
-    }
-  
-    storeSucursal(form:any): Observable<any> {
-      return this.http.post(this.url+'/sucursal',form.value);
-    }
-  
-    deleteSucursal(id:any): Observable<any> {
-      return this.http.delete(this.url+'/sucursal/'+ id);
-    }
-    filtroSucursal(id:number):Observable<any>{
-      return this.http.get(this.url+'/filtro/'+id);
-    }
-  
-  
-  //Departamentos
-    getDpto(): Observable<any> {
-      return this.http.get(this.url+'/dpto');
-    }
-  
-    editDpto(id: number): Observable<any> {
-      return this.http.get(this.url+'/dpto/'+id);
-    }
-  
-    updateDpto(form:any,id:any): Observable<any> {
-      return this.http.put(this.url +'/dpto/'+ id, form.value);
-    }
-  
-    storeDpto(form:any): Observable<any> {
-      return this.http.post(this.url+'/dpto',form.value);
-    }
-  
-    deleteDpto(id:any): Observable<any> {
-      return this.http.delete(this.url+'/dpto/'+ id);
-    }
-  
-    
   }
   
