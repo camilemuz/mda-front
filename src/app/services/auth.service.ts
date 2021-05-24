@@ -33,12 +33,16 @@ export class AuthService {
   }
 
 
- login (email:string,password:string){
-      return this.http.post(this.url + '/login', {
-        email,
-        password
-      })
-  }
+//  login (email:string,password:string){
+//       return this.http.post(this.url + '/login', {
+//         email,
+//         password
+//       })
+//   }
+
+logIn(form: any): Observable<any> {
+  return this.http.post(this.url + '/login', form.value);
+}
 
   setUser(user:any): void{
     let user_string= JSON.stringify(user);

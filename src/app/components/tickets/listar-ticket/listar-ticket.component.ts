@@ -48,5 +48,8 @@ export class ListarTicketComponent implements OnInit {
     this.router.navigate(['/editar-ticket',id]);
   }
 
+   detalleTic(id:number){
+     this.router.navigate(['/detalle-ticket',id]);
+   }
 
 }

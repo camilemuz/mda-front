@@ -35,6 +35,8 @@ import { ListarTicketComponent } from './components/tickets/listar-ticket/listar
 import { EditarTicketComponent } from './components/tickets/editar-ticket/editar-ticket.component';
 import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ticket.component';
 
+import { SidebarModule } from './components/shared/sidebar/sidebar.module';
+
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ti
     CrearDptoComponent,
     ListarTicketComponent,
     EditarTicketComponent,
-    CrearTicketComponent
+    CrearTicketComponent,
+    
     
     
    
@@ -76,7 +79,7 @@ import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ti
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
+    SidebarModule
    
   ],
   providers: [

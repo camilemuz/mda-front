@@ -28,6 +28,7 @@ import { EditarDptoComponent } from './components/admin/configuracion/lugar/depa
 import { ListarTicketComponent } from './components/tickets/listar-ticket/listar-ticket.component';
 import { EditarTicketComponent } from './components/tickets/editar-ticket/editar-ticket.component';
 import { CrearTicketComponent } from './components/tickets/crear-ticket/crear-ticket.component';
+import { DetalleTicketComponent } from './components/tickets/detalle-ticket/detalle-ticket.component';
 
 
 export const routes: Routes = [
@@ -124,7 +125,9 @@ path: 'listar-ticket', component:ListarTicketComponent,canActivate:[AuthGuard],
 { 
  path: 'crear-ticket', component:CrearTicketComponent,canActivate:[AuthGuard]
 },
-
+{ 
+  path: 'detalle-ticket/:id', component:DetalleTicketComponent,canActivate:[AuthGuard]
+ },
 
   {
     path: 'home', component:HomeComponent,canActivate:[AuthGuard]

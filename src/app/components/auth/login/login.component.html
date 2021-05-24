@@ -6,7 +6,7 @@
                 <h2>Iniciar Sesión</h2>
                 <br>
 				<div class="ContentForm">
-        			<form [formGroup]="form" (ngSubmit)="submit()">
+        			<!-- <form [formGroup]="form" (ngSubmit)="submit()">
 
 						
 
@@ -17,7 +17,7 @@
 						<input type="email"
 						formControlName="email"
 						placeholder="Ej: usuario@epsas.com">
-<!--[formControl]="emailCrl" -->
+
 
 
 						<div *ngIf="this.form.get('password').errors && form.get('password').dirty " >
@@ -27,8 +27,54 @@
 						<input type="password"
 						formControlName="password" 						
 						placeholder="Contraseña"					
-						required>
+						required> -->
 				 
+
+						<form [formGroup]="loginForm" (ngSubmit)="login()">
+							<div class="row">
+							  <div class="col-md-12">
+								<div class="form-group">
+								  
+								  <input type="email" formControlName="email" class="form-control" placeholder="Ej: info@epsas.com.bo" required>
+		  
+								  <div *ngIf="email.invalid && (email.dirty || email.touched)"
+									   class="form-text text-muted">
+									<div *ngIf="email.errors?.required">
+									  Email es requerido.
+									</div>
+									<div *ngIf="email.errors?.email">
+									  Email no válido
+									</div>
+								  </div>
+		  
+								  <small id="emailHelp" class="form-text text-muted" *ngIf="serverErrors">{{ serverErrors.email }}</small>
+								</div>
+							  </div>
+							</div>
+
+							<div class="row">
+							  <div class="col-md-12">
+								<div class="form-group">
+								  
+								  <input type="password" [type]="showPassword ? 'password': 'text'" formControlName="password" class="form-control" placeholder="Contraseña">
+								  
+								  <span (click)="toggleShowPassword()" class="form-control-feedback px-0 py-2"
+										style="cursor: pointer; pointer-events: all;" [hidden]="!loginForm.get('password').value">
+									<i class="far fa" ria-hidden="true" [ngClass]="{'fa-eye':showPassword, 'fa-eye-slash': !showPassword}"></i>
+								  </span>
+								</div>
+								<div *ngIf="password.invalid && (password.dirty || password.touched)"
+									 class="form-text text-muted">
+								  <div *ngIf="password.errors?.required">
+									Contraseña es requerido.
+								  </div>
+								</div>
+							  </div>
+							</div>
+
+
+
+
 							
 					
 						<br>
