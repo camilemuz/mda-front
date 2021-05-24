@@ -20,7 +20,11 @@
           <a class="nav-item nav-link" [routerLink]="['configuracion']">Configuración</a>
           <a class="nav-item nav-link" [routerLink]="['recibidas']">Recibidas</a>
           <a class="nav-item nav-link" [routerLink]="['perfil']">Perfil</a>
-          
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="logout()">
+              Cerrar Sesión
+            </a>
+          </li>
 
         </div>
       </div>

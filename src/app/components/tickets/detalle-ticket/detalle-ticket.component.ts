@@ -4,12 +4,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComuRestService } from 'src/app/services/comu-rest.service';
 import { SoporteRestService } from 'src/app/services/soporte-rest.service';
+
 @Component({
-  selector: 'app-crear-ticket',
-  templateUrl: './crear-ticket.component.html',
-  styleUrls: ['./crear-ticket.component.css']
+  selector: 'app-detalle-ticket',
+  templateUrl: './detalle-ticket.component.html',
+  styleUrls: ['./detalle-ticket.component.css']
 })
-export class CrearTicketComponent implements OnInit {
+export class DetalleTicketComponent implements OnInit {
 
   sopForm:any;
   
@@ -74,7 +75,7 @@ constructor(
     this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
   });
  
-    
+
 }
         ngOnInit(): void {
       this.sopForm = new FormGroup({
@@ -83,6 +84,7 @@ constructor(
         'id_user': new FormControl(null, []),
         'id_tiporeq': new FormControl(null, []),
         'id_departamento': new FormControl(null, []),
+
 
       }      
       ); 
@@ -97,6 +99,9 @@ constructor(
     get id_departamento() { return this.sopForm.get('id_departamento'); }
     get id_user() { return this.sopForm.get('id_user'); }
     get interno() { return this.sopForm.get('interno'); }
+    
+
+    
     
 
     Register() {
@@ -147,3 +152,8 @@ constructor(
 }
 
     
+
+    
+        
+    
+  
