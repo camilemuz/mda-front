@@ -7,7 +7,7 @@ import { AuthService } from '../../../services/auth.service';
 const administrador: any[] = [
  
   {
-    path: '/admin/usuarios', title: 'Usuarios',  class: '',
+    path: '/admin/listar-usuario', title: 'Usuarios',  class: '',
     childMenu: null
   },
   {
@@ -27,7 +27,7 @@ const administrador: any[] = [
 const agente: any[] = [
  
   {
-    path: '/Pages', title: 'Home',  class: '',
+    path: '/Pages/home', title: 'Home',  class: '',
     childMenu: null
   },
   {
@@ -142,26 +142,26 @@ export class LoginComponent implements OnInit {
         this.authService.setUser(data.user);
         this.authService.getCurrentUser();
         
-        if (data.user.id_rol === '1') {
+        if (data.user.id_rol === 1) {
           menu = administrador;
         }
-        if (data.user.id_rol=== '2') {
+        if (data.user.id_rol=== 2) {
           menu = agente;
         }
-        if (data.user.id_rol === '3') {
+        if (data.user.id_rol === 3) {
           menu = funcionario;
         }
         localStorage.setItem('menu', JSON.stringify(menu));
         localStorage.removeItem('user')
         localStorage.setItem('user', JSON.stringify(data.user));
         // this.router.navigate(['/dashboard']);
-        if (data.user.id_rol === '1') {
+        if (data.user.id_rol === 1) {
           this.router.navigate(['listar-usuario']);
         }
-        if (data.user.id_rol === '2') {
+        if (data.user.id_rol === 2) {
           this.router.navigate(['/listar-tickets']);
         }
-        if (data.user.id_rol === '3') {
+        if (data.user.id_rol === 3) {
           this.router.navigate(['/home']);
         }
         alert("Bienvenid@");

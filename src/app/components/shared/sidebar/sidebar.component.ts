@@ -15,21 +15,27 @@ export class SidebarComponent implements OnInit {
   rol = '';
   constructor( private router: Router, private auth: AuthService) {
     
-    this.menu = JSON.parse(localStorage.getItem('menu')) || [];
+    // this.menu = localStorage.getItem('menu') !== null?JSON.parse(localStorage.getItem('menu'));
   }
   
   ngOnInit() {
-    this.menu = JSON.parse(localStorage.getItem('menu')) || [];
+    const men = localStorage.getItem('menu');
+    if(men !== null){
+      this.menu = JSON.parse(men) || [];
+    }else{
+      this.menu =  [];
+    }
+    
     // ROUTES = this.menu;
     this.menuItems = this.menu.filter(menuItem => menuItem);
-    this.usuario = JSON.parse(localStorage.getItem('user')) || {};
-    if (this.usuario.id_rol === '1') {
+    this.usuario = localStorage.getItem('user') || {};
+    if (this.usuario.cod_rol === 'R1') {
       this.rol = 'administrador';
     }
-    if (this.usuario.id_rol === '2') {
+    if (this.usuario.cod_rol === 'R2') {
       this.rol = 'agente';
     }
-    if (this.usuario.id_rol === '3') {
+    if (this.usuario.cod_rol === 'R3') {
       this.rol = 'funcionario';
     }
   }
