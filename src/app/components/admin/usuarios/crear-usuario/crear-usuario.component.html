@@ -86,7 +86,7 @@
 
             <select formControlName="id_cargo" class="form-control">
               <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
-              <option [ngValue]="row.id" *ngFor="let row of cargoList.data">{{row.cargo}}</option>
+              <option [ngValue]="row.id" *ngFor="let row of cargoList">{{row.cargo}}</option>
               
             </select>
 
@@ -99,12 +99,12 @@
 
               <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group row">
-                  <label for="id_rol" class="col-form-label col-sm-4">Rol:</label>
+                  <label  class="col-form-label col-sm-4">Rol:</label>
                 <div class="col-sm-8">
 
                   <select formControlName="id_rol" class="form-control">
                     <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
-                    <option [ngValue]="row.id" *ngFor="let row of rolList.data">{{row.rol}}</option>
+                    <option [ngValue]="row.id" *ngFor="let row of rolList">{{row.rol}}</option>
                     
                   </select>
 

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { CargoRestService } from 'src/app/services/cargo-rest.service';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
 
@@ -18,18 +19,26 @@ import { UserRestService } from 'src/app/services/user-rest.service';
 export class CrearUsuarioComponent implements OnInit {
   
     registerForm:any;
-    cargoList:any;
-    rolList:any;
+    cargoList:any[]=[];
+    rolList:any[]=[];
     private url='http://mda-back.test/api';
 
-  constructor(private auth:AuthService, private userRest:UserRestService,private cargoRest:CargoRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute) {
-    http.get(this.url+'/cargo').subscribe((data)=>{
+  constructor(
+    private comunRest: ComuRestService,
+    private auth:AuthService, 
+    private userRest:UserRestService,
+    private cargoRest:CargoRestService, 
+    http:HttpClient, 
+    private formBuilder: FormBuilder,  
+    private router: Router, 
+    private route: ActivatedRoute) {
+    comunRest.get('/cargo').subscribe((data)=>{
       console.log(data);
-      this.cargoList=data;
+      this.cargoList=data.data;
     });
-    http.get(this.url+'/rol').subscribe((data)=>{
+    comunRest.get('/rol').subscribe((data)=>{
       console.log(data);
-      this.rolList=data;
+      this.rolList=data.data;
     });
  
 

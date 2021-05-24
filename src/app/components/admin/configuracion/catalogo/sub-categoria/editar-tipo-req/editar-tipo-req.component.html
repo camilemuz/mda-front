@@ -50,7 +50,7 @@
 
             <select formControlName="id_categoria" class="form-control">
               <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
-              <option [value]="row.id" *ngFor="let row of catList.data">{{row.categoria}}</option>
+              <option [value]="row.id" *ngFor="let row of catList">{{row.categoria}}</option>
               
             </select>
 

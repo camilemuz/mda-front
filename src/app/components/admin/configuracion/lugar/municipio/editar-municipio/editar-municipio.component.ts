@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
 import { LugarRestService } from 'src/app/services/lugar-rest.service';
 
 @Component({
@@ -18,13 +19,14 @@ export class EditarMunicipioComponent implements OnInit {
 
   private url='http://mda-back.test/api';
   constructor(
+   private comunRest: ComuRestService,
     private route: ActivatedRoute,
      private luRest: LugarRestService,
      private router: Router,
      public http: HttpClient ) { 
-      http.get(this.url+'/municipio').subscribe((data)=>{
+     comunRest.get('/municipio').subscribe((data)=>{
         console.log(data);
-        this.MunList=data;
+        this.MunList=data.data;
       });
      }
 

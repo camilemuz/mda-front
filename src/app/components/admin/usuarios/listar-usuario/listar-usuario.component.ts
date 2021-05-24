@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -11,15 +12,21 @@ import { UserRestService } from 'src/app/services/user-rest.service';
 })
 export class ListarUsuarioComponent implements OnInit {
   private url='http://mda-back.test/api';
-  userList:any;
+  userList:any[]=[];
   
   
 
 
-  constructor(private userRest:UserRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute){
-    http.get(this.url+'/user').subscribe((data)=>{
+  constructor(
+    private comunRest: ComuRestService,
+    private userRest:UserRestService, 
+    http:HttpClient, 
+    private formBuilder: FormBuilder,  
+    private router: Router, 
+    private route: ActivatedRoute){
+    comunRest.get('/user').subscribe((data)=>{
       console.log(data);
-      this.userList=data;
+      this.userList=data.data;
     });
   
  

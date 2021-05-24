@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogoRestService } from 'src/app/services/catalogo-rest.service';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
 
 @Component({
   selector: 'app-editar-tipo-req',
@@ -18,13 +19,14 @@ export class EditarTipoReqComponent implements OnInit {
 
   private url='http://mda-back.test/api';
   constructor(
+    private comunRest: ComuRestService,
     private route: ActivatedRoute,
      private catRest: CatalogoRestService,
      private router: Router,
      public http: HttpClient ) { 
-      http.get(this.url+'/cat').subscribe((data)=>{
+      this.comunRest.get('/cat').subscribe((data)=>{
         console.log(data);
-        this.catList=data;
+        this.catList=data.data;
       });
      }
 

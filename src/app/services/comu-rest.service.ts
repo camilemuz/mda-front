@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
     constructor(private http: HttpClient) { }
   
   
-    // Municipios
+
     get(url:string): Observable<any> {
       return this.http.get(this.url+url);
     }

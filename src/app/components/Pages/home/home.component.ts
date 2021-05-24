@@ -128,7 +128,7 @@ constructor(
     
 
     Register() {
-       console.log("desde controller",this.sopForm);
+      //  console.log("desde controller",this.sopForm);
       this.sopRest.storeReq(this.sopForm).subscribe(() => {      
 
         this.router.navigate(['listar-ticket']);

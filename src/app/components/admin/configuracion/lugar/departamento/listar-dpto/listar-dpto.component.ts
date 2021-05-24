@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
 import { LugarRestService } from 'src/app/services/lugar-rest.service';
 
 @Component({
@@ -17,14 +18,16 @@ export class ListarDptoComponent implements OnInit {
   
 
 
-  constructor(private lugarRest:LugarRestService, 
+  constructor(
+    private comunRest: ComuRestService,
+    private lugarRest:LugarRestService, 
     http:HttpClient, 
     private formBuilder: FormBuilder,  
     private router: Router, 
     private route: ActivatedRoute){
-    http.get(this.url+'/dpto').subscribe((data)=>{
+    comunRest.get('/dpto').subscribe((data)=>{
       console.log(data);
-      this.dptoList=data;
+      this.dptoList=data.data;
     });
   
  
