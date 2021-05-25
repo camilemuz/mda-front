@@ -89,6 +89,13 @@ logIn(form: any): Observable<any> {
     
   }
 
+  register1(form: any) {
+    console.log("desde auth",form);
+    return this.http.post(this.url + '/registro', form.value);
+    
+  }
+
+
 recuperarTodos(){
   return this.http.get(this.url+'/user');
 }

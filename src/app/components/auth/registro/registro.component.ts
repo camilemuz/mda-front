@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { CargoRestService } from 'src/app/services/cargo-rest.service';
-import { CommonAuthService } from 'src/app/services/common-auth.service';
-import { UserRestService } from 'src/app/services/user-rest.service';
+import { ComuRestService } from 'src/app/services/comu-rest.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -13,73 +12,68 @@ import { UserRestService } from 'src/app/services/user-rest.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+  registerForm:any;
+  cargoList:any[]=[];
+  rolList:any[]=[];
+  private url='http://mda-back.test/api';
 
-  // [x: string]: any;
-    registerForm:any;
-    userList:any;
-    cargoList:any;
-    private url='http://mda-back.test/api';
+constructor(
+  private comunRest: ComuRestService,
+  private auth:AuthService, 
+  private router: Router) {
+  comunRest.get('/cargo').subscribe((data)=>{
+    console.log(data);
+    this.cargoList=data.data;
+  });
+  comunRest.get('/rol').subscribe((data)=>{
+    console.log(data);
+    this.rolList=data.data;
+  });
 
-  constructor(private auth:CommonAuthService,
-     private route: Router, private userRest:UserRestService,  http:HttpClient, private cargoRest:CargoRestService) {
 
-      http.get(this.url+'/cargo').subscribe((data)=>{
-        console.log(data);
-        this.cargoList=data;
-      });
-
-    // this.form=formBuilder.group({
-    //   nombre: ['',[Validators.required]],
-    //   ap_paterno: ['',[Validators.required]],
-    //   ap_materno: [''],
-    //   email: ['',[Validators.required, Validators.email]],
-    //   password: ['',[Validators.required]],
-    //   password_confirma: ['',[Validators.required]],
-    // });  
-    
 }
-    
-      ngOnInit(): void {
-        this.registerForm = new FormGroup({
-          'nombre': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-          'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-          'ap_materno': new FormControl(null,[]),          
-          'email': new FormControl(null, [Validators.required, Validators.email]),
-          'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
-          'cargo': new FormControl(null,[Validators.required]),
-          'unidad': new FormControl(null,[Validators.required]),
-          'rol': new FormControl(null, [Validators.required]),
-           
-          //  'confirma': new FormControl(null, [Validators.required]),         
-        }
-        ); }
-
   
-      get nombre() { return this.registerForm.get('nombre'); }
-      get ap_paterno() { return this.registerForm.get('ap_paterno'); }
-      get ap_materno() { return this.registerForm.get('ap_materno'); }
-      get email() { return this.registerForm.get('email'); }
-      get password() { return this.registerForm.get('password'); }
-      get cargo() { return this.registerForm.get('cargo'); }
-      get unidad() { return this.registerForm.get('unidad'); }
-      get rol() { return this.registerForm.get('rol'); }
-      
-      // get confirma() { return this.registerForm.get('confirma'); }
+    ngOnInit(): void {
+      this.registerForm = new FormGroup({
+        'nombre': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        'ap_materno': new FormControl(null,[]),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'password': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+        'id_cargo': new FormControl(null, [Validators.required]),         
+        'id_rol': new FormControl(null, [Validators.required]),          
+        //  'confirma': new FormControl(null, [Validators.required]),         
+      }
+      ); }
 
-      Register() {
-       // console.log("desde controller",this.registerForm);
-        this.auth.registerUser(this.registerForm).subscribe(() => {      
-          this.route.navigate(['home/login']);
+     
+      
+
+
+    get nombre() { return this.registerForm.get('nombre'); }
+    get ap_paterno() { return this.registerForm.get('ap_paterno'); }
+    get ap_materno() { return this.registerForm.get('ap_materno'); }
+    get unidad() { return this.registerForm.get('unidad'); }
+    get email() { return this.registerForm.get('email'); }
+    get password() { return this.registerForm.get('password'); }
+    get id_rol() { return this.registerForm.get('id_rol'); }
+    get id_cargo() { return this.registerForm.get('id_cargo'); }
     
-        })
-        
-      // alert ('Usuario registrado')
+    // get confirma() { return this.registerForm.get('confirma'); }
+
+    Register() {
+      // console.log("desde controller",this.registerForm);
+      this.auth.register1(this.registerForm).subscribe(() => {      
+        this.router.navigate(['login']);
+        alert ('Usuario registrado')
+      })
       
+    // alert ('Usuario registrado')
+    
 
-       }
-
-}
+     }
 
 
+    }
 
 

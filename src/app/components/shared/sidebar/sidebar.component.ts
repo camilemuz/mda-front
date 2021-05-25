@@ -29,13 +29,13 @@ export class SidebarComponent implements OnInit {
     // ROUTES = this.menu;
     this.menuItems = this.menu.filter(menuItem => menuItem);
     this.usuario = localStorage.getItem('user') || {};
-    if (this.usuario.cod_rol === 'R1') {
+    if (this.usuario.id_rol === 1) {
       this.rol = 'administrador';
     }
-    if (this.usuario.cod_rol === 'R2') {
+    if (this.usuario.id_rol === 2) {
       this.rol = 'agente';
     }
-    if (this.usuario.cod_rol === 'R3') {
+    if (this.usuario.id_rol === 3) {
       this.rol = 'funcionario';
     }
   }

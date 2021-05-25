@@ -4,52 +4,52 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 
-const administrador: any[] = [
+const Administrador: any[] = [
  
   {
-    path: '/admin/listar-usuario', title: 'Usuarios',  class: '',
+    path: '/listar-usuario', title: 'Usuarios',  class: '',
     childMenu: null
   },
   {
-    path: '/tickets', title: 'Tickets',  class: '',
+    path: '/listar-ticket', title: 'Tickets',  class: '',
     childMenu: null
   },
   {
-    path: '/admin/configuracion', title: 'Configuracion',  class: '',
+    path: '/configuracion', title: 'Configuracion',  class: '',
     childMenu: null
   },
   {
-    path: '/admin/dashboard', title: 'Dashboard',  class: '',
+    path: '/dashboard', title: 'Dashboard',  class: '',
     childMenu: null
   },
  
 ];
-const agente: any[] = [
+const Agente: any[] = [
  
   {
-    path: '/Pages/home', title: 'Home',  class: '',
+    path: '/home', title: 'Home',  class: '',
     childMenu: null
   },
   {
-    path: '/tickets', title: 'tickets',  class: '',
+    path: '/listar-ticket', title: 'Tickets',  class: '',
     childMenu: null
   },
 
 ];
-const funcionario: any[] = [
+const Funcionario: any[] = [
  
   {
-    path: '/Pages/home', title: 'Home',  class: '',
+    path: '/home', title: 'Home',  class: '',
     childMenu: null
   },
   {
-    path: '/tickets/listar-ticket', title: 'Listar Ticket',  class: '',
+    path: '/listar-ticket', title: 'Tickets',  class: '',
     childMenu: null
   },
-  {
-    path: '/tickets/editar-ticket', title: 'Editar Ticket',  class: '',
-    childMenu: null
-  },
+  // {
+  //   path: '/editar-ticket', title: 'Editar Ticket',  class: '',
+  //   childMenu: null
+  // },
 
 ];
 
@@ -143,13 +143,13 @@ export class LoginComponent implements OnInit {
         this.authService.getCurrentUser();
         
         if (data.user.id_rol === 1) {
-          menu = administrador;
+          menu = Administrador;
         }
         if (data.user.id_rol=== 2) {
-          menu = agente;
+          menu = Agente;
         }
         if (data.user.id_rol === 3) {
-          menu = funcionario;
+          menu = Funcionario;
         }
         localStorage.setItem('menu', JSON.stringify(menu));
         localStorage.removeItem('user')

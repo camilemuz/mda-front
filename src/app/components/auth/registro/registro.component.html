@@ -1,189 +1,165 @@
 <div class="container">
-    <h1>Registro de Usuario</h1>
-    
-						
-						
-    <hr>
-    <form  class="custom-form" [formGroup]="registerForm" (ngSubmit)="Register()"  novalidate="">
-   
-        
-            <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-4">Nombre:</label>
-                      <div class="col-sm-8">
-                    <input type="text"  formControlName="nombre"  class="form-control" placeholder="Nombre" >
-  
-                    <div *ngIf="this.registerForm.get('nombre').errors && registerForm.get('nombre').dirty ">
-                                        
-                      <span *ngIf="this.registerForm.get('nombre').errors?.required">
-                        <font color ="red">El nombre no puede quedar vacío</font>
-                      </span>
-                      <span *ngIf="this.registerForm.get('nombre').errors?.minlength">
-                        <font color ="red">Debe tener como mínimo 3 caracteres</font>
-                      </span>
-                    </div>
-                      </div>
-                    </div>
-                </div>
-    
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group row">
-                        <label for="apellido" class="col-form-label col-sm-4">Apellido Paterno:</label>
-                      <div class="col-sm-8">
-                        <input type="text"  formControlName="ap_paterno"  class="form-control" placeholder="Apellido Paterno" >
-  
-                        <div *ngIf="this.registerForm.get('ap_paterno').errors && registerForm.get('ap_paterno').dirty ">
-                                        
-                          <span *ngIf="this.registerForm.get('ap_paterno').errors?.required">
-                            <font color ="red">El Apellido Paterno no puede quedar vacío</font>
-                          </span>
-                          <span *ngIf="this.registerForm.get('ap_paterno').errors?.minlength">
-                            <font color ="red">Debe tener como mínimo 3 caracteres</font>
-                          </span>
-                        </div>
-  
-                      </div>
-                    </div>
-                </div>
-  
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group row">
-                        <label for="apellido" class="col-form-label col-sm-4">Apellido Materno:</label>
-                      <div class="col-sm-8">
-                        <input  type="text"  formControlName="ap_materno"  class="form-control" placeholder="Apellido Materno">
-                      </div>
-                    </div>
-                </div>
-
-
-              
-                
-  
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-4">Email:</label>
-                      <div class="col-sm-8"> 
-                        <input  type="email" 
-                        formControlName="email"  class="form-control" placeholder="Email" >
-  
-                        <div *ngIf="this.registerForm.get('email').errors && registerForm.get('email').dirty ">
-                                        
-                          <span *ngIf="this.registerForm.get('email').errors?.required">
-                            <font color ="red">El email no puede quedar vacío</font>
-                          </span>
-                          <span *ngIf="this.registerForm.get('email').errors?.email">
-                            <font color ="red">El email no es válido</font>
-                          </span>
-                        </div>
-  
-                      </div>
-                    </div>
-                </div>
-  
-
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group row">
-                <label for="cargo" class="col-form-label col-sm-4">Cargo:</label>
-              <div class="col-sm-8">
-
-                <select formControlName="cargo" class="form-control">
-                  <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
-                  <option [ngValue]="row.id" *ngFor="let row of cargoList.data">{{row.cargo}}</option>
-                  
-                </select>
-
-                </div>
-              </div>
-            </div>
-
-  
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                  <div class="form-group row">
-                      <label for="apellido" class="col-form-label col-sm-4">Unidad:</label>
-                    <div class="col-sm-8">
-                      <input type="text"  formControlName="unidad"  class="form-control" placeholder="Unidad" >
-
-                      <div *ngIf="this.registerForm.get('unidad').errors && registerForm.get('unidad').dirty ">
-                                      
-                        <span *ngIf="this.registerForm.get('unidad').errors?.required">
-                          <font color ="red">Unidad no puede quedar vacío</font>
-                        </span>
-                        
-                      </div>
-
-                    </div>
-                  </div>
-              </div>
-  
-  
-  
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                      <div class="form-group row">
-                    <label for="rol" class="col-form-label col-sm-4">Rol:</label>
-                  <div class="col-sm-8">
-  
-                    <select formControlName="rol" class="form-control"> 
-                      <option value="ADMIN">ADMIN</option>
-                      <option value="FUNCIONARIO">FUNCIONARIO</option>
-                      <option value="TÉCNICO">TÉCNICO</option>
-                    </select>
-  
-                    </div>
-                  </div>
-                </div>
-            
-  
-            </div>
-    
-  
-            
-          
-    
-            <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
-    
-                    <div class="form-group row">
-                        <label for="password" class="col-form-label col-sm-4">Contraseña:</label>
-                      <div class="col-sm-8">
-                        <input  type="password" formControlName="password"  class="form-control" placeholder="Contraseña" >
-                      </div>
-                    </div>
-    
-                </div>
-    
-                <!-- <div class="col-xs-6 col-sm-6 col-md-6">
-    
-                    <div class="form-group row">
-                        <label for="password" class="col-form-label col-sm-4">Confirmar contraseña:</label>
-                      <div class="col-sm-8">
-                        <input  type="password" formControlName="confirma"  class="form-control" placeholder="Confirmar contraseña">
-                      </div>
-                    </div>
-    
-                </div> -->
-          </div>
-    
-  
-  
-            <div class="row">
-                <label class="col-sm-9 control-label" for="singlebutton"></label>
-                    <div class=" row col-md-3">
-                        <button   type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;" (click)="Register()" >Guardar</button>
-                    </div>
-            </div>
-        
-            <div class="row">
-              <div class="col-md-3">
-							<h6>¿Ya tiene una cuenta?</h6>
-						<button type="button"  
-						 routerLink="/login"
-						  class="btn btn-primary  btn-block" style="background-color: #ff9100;">
-						  Login </button>
-            </div>
-          </div>
+  <h1>Registro</h1>
+  <hr>
+  <form  class="custom-form" [formGroup]="registerForm" (ngSubmit)="Register()"  novalidate="">
+ 
       
-    </form>
-  </div>
-    
+          <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group row">
+                      <label for="nombre" class="col-form-label col-sm-4">Nombre:</label>
+                    <div class="col-sm-8">
+                  <input type="text"  formControlName="nombre"  class="form-control" placeholder="Nombre" >
+
+                  <div *ngIf="this.registerForm.get('nombre').errors && registerForm.get('nombre').dirty ">
+                                      
+                    <span *ngIf="this.registerForm.get('nombre').errors?.required">
+                      <font color ="red">El nombre no puede quedar vacío</font>
+                    </span>
+                    <span *ngIf="this.registerForm.get('nombre').errors?.minlength">
+                      <font color ="red">Debe tener como mínimo 3 caracteres</font>
+                    </span>
+                  </div>
+                    </div>
+                  </div>
+              </div>
   
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group row">
+                      <label for="apellido" class="col-form-label col-sm-4">Apellido Paterno:</label>
+                    <div class="col-sm-8">
+                      <input type="text"  formControlName="ap_paterno"  class="form-control" placeholder="Apellido Paterno" >
+
+                      <div *ngIf="this.registerForm.get('ap_paterno').errors && registerForm.get('ap_paterno').dirty ">
+                                      
+                        <span *ngIf="this.registerForm.get('ap_paterno').errors?.required">
+                          <font color ="red">El Apellido Paterno no puede quedar vacío</font>
+                        </span>
+                        <span *ngIf="this.registerForm.get('ap_paterno').errors?.minlength">
+                          <font color ="red">Debe tener como mínimo 3 caracteres</font>
+                        </span>
+                      </div>
+
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group row">
+                      <label for="apellido" class="col-form-label col-sm-4">Apellido Materno:</label>
+                    <div class="col-sm-8">
+                      <input  type="text"  formControlName="ap_materno"  class="form-control" placeholder="Apellido Materno">
+                    </div>
+                  </div>
+              </div>
+
+
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group row">
+                    <label for="email" class="col-form-label col-sm-4">Email:</label>
+                  <div class="col-sm-8"> 
+                    <input  type="email" 
+                    formControlName="email"  class="form-control" placeholder="Email" >
+
+                    <div *ngIf="this.registerForm.get('email').errors && registerForm.get('email').dirty ">
+                                    
+                      <span *ngIf="this.registerForm.get('email').errors?.required">
+                        <font color ="red">El email no puede quedar vacío</font>
+                      </span>
+                      <span *ngIf="this.registerForm.get('email').errors?.email">
+                        <font color ="red">El email no es válido</font>
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group row">
+            <label for="id_cargo" class="col-form-label col-sm-4">Cargo:</label>
+          <div class="col-sm-8">
+
+            <select formControlName="id_cargo" class="form-control">
+              <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
+              <option [ngValue]="row.id" *ngFor="let row of cargoList">{{row.cargo}}</option>
+              
+            </select>
+
+            </div>
+          </div>
+        </div>
+
+                            
+
+
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group row">
+                  <label  class="col-form-label col-sm-4">Rol:</label>
+                <div class="col-sm-8">
+
+                  <select formControlName="id_rol" class="form-control">
+                    <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
+                    <option [ngValue]="row.id" *ngFor="let row of rolList">{{row.rol}}</option>
+                    
+                  </select>
+
+                  </div>
+                </div>
+              </div>
+          
+
+          </div>
+  
+
+          
+        
+  
+          <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+  
+                  <div class="form-group row">
+                      <label for="password" class="col-form-label col-sm-4">Contraseña:</label>
+                    <div class="col-sm-8">
+                      <input  type="password" formControlName="password"  class="form-control" placeholder="Contraseña" >
+                    </div>
+                  </div>
+  
+              </div>
+  
+              <!-- <div class="col-xs-6 col-sm-6 col-md-6">
+  
+                  <div class="form-group row">
+                      <label for="password" class="col-form-label col-sm-4">Confirmar contraseña:</label>
+                    <div class="col-sm-8">
+                      <input  type="password" formControlName="confirma"  class="form-control" placeholder="Confirmar contraseña">
+                    </div>
+                  </div>
+  
+              </div> -->
+        </div>
+  
+
+
+          <div class="row">
+              <label class="col-sm-9 control-label" for="singlebutton"></label>
+                  <div class=" row col-md-3">
+                      <button   type="submit"  class="btn btn-primary btn-lg btn-block" style="background-color: #ff9100;" (click)="Register()" >Guardar</button>
+                  </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+            <h6>¿Ya tiene una cuenta?</h6>
+          <button type="button"  
+           routerLink="/login"
+            class="btn btn-primary  btn-block" style="background-color: #ff9100;">
+            Login </button>
+          </div>
+        </div>
+    
+  </form>
+</div>
