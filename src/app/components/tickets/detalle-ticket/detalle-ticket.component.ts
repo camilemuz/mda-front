@@ -12,17 +12,10 @@ import { SoporteRestService } from 'src/app/services/soporte-rest.service';
 })
 export class DetalleTicketComponent implements OnInit {
 
-  sopForm:any;
+  detForm:any;
   
-  userList:any[]=[];
-  tipoList:any[]=[];
-  calList:any[]=[];
- prioList:any[]=[];
-  dptoList:any[]=[];
-  estList:any[]=[];
-  catList:any[]=[];
-  munList:any[]=[];
-  sucList:any[]=[];
+ ticketList:any[]=[];
+  reqList:any[]=[];
   
   
   dataUser:any;
@@ -31,54 +24,28 @@ export class DetalleTicketComponent implements OnInit {
  
 
 constructor(
-  private sopRest:SoporteRestService,
+
   private comunRest:ComuRestService, 
  public http:HttpClient, 
   private formBuilder: FormBuilder, 
   private router: Router, 
   private route: ActivatedRoute) {
 
-    var user:any=localStorage.getItem('currentUser');
-    this.dataUser=JSON.parse(user);
-    console.log('users',user,this.dataUser);
-    this.comunRest.get('/user').subscribe((data)=>{
+    
+
+  
+  
+
+
+  this.comunRest.get('/req').subscribe((data)=>{
     console.log(data);
-    this.userList=data.data;
+    this.reqList=data.data;
   });
-  this.comunRest.get('/tipo').subscribe((data)=>{
-    console.log(data);
-    this.tipoList=data.data;
-  });
-  this.comunRest.get('/q').subscribe((data)=>{
-    console.log(data);
-    this.calList=data.data;
-  });
-  this.comunRest.get('/prioridad').subscribe((data)=>{
-    console.log(data);
-    this.prioList=data.data;
-  });
-  this.comunRest.get('/dpto').subscribe((data)=>{
-    console.log(data);
-    this.dptoList=data.data;
-  });
-  this.comunRest.get('/estado').subscribe((data)=>{
-    console.log(data);
-    this.estList=data.data;
-  });
-  this.comunRest.get('/cat').subscribe((data)=>{
-    console.log(data);
-    this.catList=data.data;
-  });
-  this.comunRest.get('/municipio').subscribe((data)=>{
-    console.log(data);
-    this.munList=data.data;
-    this.sopForm.controls['id_user'].setValue(this.dataUser.nombre);
-  });
- 
+  
 
 }
         ngOnInit(): void {
-      this.sopForm = new FormGroup({
+      this.detForm = new FormGroup({
         'descripcion': new FormControl(null, []),  
         'interno': new FormControl(null, []),      
         'id_user': new FormControl(null, []),
@@ -94,59 +61,18 @@ constructor(
 
     
 
-    get descripcion() { return this.sopForm.get('descripcion'); }  
-    get id_tiporeq() { return this.sopForm.get('id_tiporeq'); }    
-    get id_departamento() { return this.sopForm.get('id_departamento'); }
-    get id_user() { return this.sopForm.get('id_user'); }
-    get interno() { return this.sopForm.get('interno'); }
+    get descripcion() { return this.detForm.get('descripcion'); }  
+    get id_tiporeq() { return this.detForm.get('id_tiporeq'); }    
+    get id_departamento() { return this.detForm.get('id_departamento'); }
+    get id_user() { return this.detForm.get('id_user'); }
+    get interno() { return this.detForm.get('interno'); }
     
 
     
     
 
-    Register() {
-      //  console.log("desde controller",this.sopForm);
-      this.sopRest.storeReq(this.sopForm).subscribe(() => {      
-
-        this.router.navigate(['listar-ticket']);
-  
-      })
-      
-
-     }
-
-     filtroChange(e:any){
-       console.log('aaaa?',e.target.value);
-       if(e !== undefined){
-        this.comunRest.get('/filtro/'+e.target.value).subscribe(resp => {
-          console.log('respo', resp);
-          this.sucList=resp.data;
-          
-          
-        }, error=>{
-          console.log('erro', error);
-          
-        })
-       }
-       
-       
-     }
-
-     filtroChangeCat(c:any){
-      console.log('bbbbb',c.target.value);
-      
-       this.comunRest.get('/filtrocat/'+c.target.value).subscribe(respo => {
-         console.log('respo', respo);
-         this.tipoList=respo.data;
-         
-       }, error=>{
-         console.log('erro', error);
-         
-       })
-      
-      
-      
-    }
+    
+     
 
     
 }

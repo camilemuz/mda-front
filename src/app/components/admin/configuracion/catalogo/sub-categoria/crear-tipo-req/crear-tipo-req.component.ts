@@ -14,17 +14,22 @@ export class CrearTipoReqComponent implements OnInit {
   reqForm:any;
   catList:any;
   tipotList:any;
+  divList:any;
 
   private url='http://mda-back.test/api';
 
 constructor( private catRest:CatalogoRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute) {
   http.get(this.url+'/tipo').subscribe((data)=>{
     console.log(data);
-    this.tipotList=data;
+    this.tipotList=data.data;
   });
   http.get(this.url+'/cat').subscribe((data)=>{
     console.log(data);
-    this.catList=data;
+    this.catList=data.data;
+  });
+  http.get(this.url+'/div').subscribe((data)=>{
+    console.log(data);
+    this.divList=data.data;
   });
 
 
@@ -32,8 +37,9 @@ constructor( private catRest:CatalogoRestService, http:HttpClient, private formB
         ngOnInit(): void {
       this.reqForm = new FormGroup({
         'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        'tiporeq': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-        'id_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'tiporeq': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'id_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'id_division': new FormControl(null, [Validators.required, Validators.minLength(3)]),
         
       }
       ); }
@@ -42,9 +48,10 @@ constructor( private catRest:CatalogoRestService, http:HttpClient, private formB
       
 
 
-    get cod() { return this.reqForm.get('cod'); }
-    get tiporeq() { return this.reqForm.get('tiporeq'); }
-    get id_categoria() { return this.reqForm.get('id_categoria'); }
+      get cod() { return this.reqForm.get('cod'); }
+      get tiporeq() { return this.reqForm.get('tiporeq'); }
+      get id_categoria() { return this.reqForm.get('id_categoria'); }
+      get id_division() { return this.reqForm.get('id_division'); }
     
 
     Register() {

@@ -49,7 +49,7 @@
           <div class="col-sm-8">
 
             <select formControlName="id_categoria" class="form-control">
-              <option [ngValue]="null" disabled>--SELECCIONAR--</option> 
+              <option [ngValue]="null" disabled>--Seleciona Categoría--</option> 
               <option [value]="row.id" *ngFor="let row of catList">{{row.categoria}}</option>
               
             </select>
@@ -57,9 +57,24 @@
             </div>
           </div>
         </div>
-            
+
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group row">
+        <label for="id_division" class="col-form-label col-sm-4">División:</label>
+      <div class="col-sm-8">
+
+        <select formControlName="id_division" class="form-control">
+          <option [ngValue]="null" disabled>--Selecciona División--</option> 
+          <option [value]="row.id" *ngFor="let row of divList">{{row.division}}</option>
+          
+        </select>
 
         </div>
+      </div>
+    </div>
+            
+
+      </div>
 
 
         <div class="row">

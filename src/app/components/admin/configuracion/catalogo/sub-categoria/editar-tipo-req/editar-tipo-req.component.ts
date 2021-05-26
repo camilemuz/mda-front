@@ -15,6 +15,7 @@ export class EditarTipoReqComponent implements OnInit {
   updateReqFrom: FormGroup | any;
   serverErrors = [];
   catList:any;
+  divList:any;
   @Input() data: any;
 
   private url='http://mda-back.test/api';
@@ -27,6 +28,11 @@ export class EditarTipoReqComponent implements OnInit {
       this.comunRest.get('/cat').subscribe((data)=>{
         console.log(data);
         this.catList=data.data;
+      });
+
+      this.comunRest.get('/div').subscribe((data)=>{
+        console.log(data);
+        this.divList=data.data;
       });
      }
 
@@ -41,7 +47,8 @@ export class EditarTipoReqComponent implements OnInit {
         this.updateReqFrom.patchValue({
         'cod': response.data.cod,
         'tiporeq': response.data.tiporeq,
-        'id_categoria': response.data.id_categoria
+        'id_categoria': response.data.id_categoria,
+        'id_division': response.data.id_division
         
         })
       },
@@ -54,6 +61,7 @@ export class EditarTipoReqComponent implements OnInit {
       'cod': new FormControl(null, [Validators.required, Validators.minLength(3)]),
       'tiporeq': new FormControl(null, [Validators.required, Validators.minLength(3)]),
       'id_categoria': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      'id_division': new FormControl(null, [Validators.required, Validators.minLength(3)]),
          
       
     });
@@ -63,6 +71,7 @@ export class EditarTipoReqComponent implements OnInit {
       get cod() { return this.updateReqFrom.get('cod'); }
       get tiporeq() { return this.updateReqFrom.get('tiporeq'); }
       get id_categoria() { return this.updateReqFrom.get('id_categoria'); }
+      get id_division() { return this.updateReqFrom.get('id_division'); }
      
 
       updateCatDetails(){
