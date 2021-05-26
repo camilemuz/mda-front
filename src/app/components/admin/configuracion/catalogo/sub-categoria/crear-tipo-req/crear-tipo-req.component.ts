@@ -12,22 +12,22 @@ import { CatalogoRestService } from 'src/app/services/catalogo-rest.service';
 export class CrearTipoReqComponent implements OnInit {
 
   reqForm:any;
-  catList:any;
-  tipotList:any;
-  divList:any;
+  catList:any[]=[];
+  tipotList:any[]=[];
+  divList:any[]=[];
 
   private url='http://mda-back.test/api';
 
 constructor( private catRest:CatalogoRestService, http:HttpClient, private formBuilder: FormBuilder,  private router: Router, private route: ActivatedRoute) {
-  http.get(this.url+'/tipo').subscribe((data)=>{
-    console.log(data);
-    this.tipotList=data.data;
-  });
-  http.get(this.url+'/cat').subscribe((data)=>{
+  // http.get(this.url+'/tipo').subscribe((data)=>{
+  //   console.log(data);
+  //   this.tipotList=data.data;
+  // });
+  http.get(this.url+'/cat').subscribe((data:any)=>{
     console.log(data);
     this.catList=data.data;
   });
-  http.get(this.url+'/div').subscribe((data)=>{
+  http.get(this.url+'/div').subscribe((data:any)=>{
     console.log(data);
     this.divList=data.data;
   });
