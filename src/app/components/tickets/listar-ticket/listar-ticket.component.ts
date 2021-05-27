@@ -13,7 +13,10 @@ import { SoporteRestService } from 'src/app/services/soporte-rest.service';
 export class ListarTicketComponent implements OnInit {
 
   private url='http://mda-back.test/api';
-  ticList:any[]=[];  
+  ticList:any;  
+  estList:any;  
+  reqList:any; 
+
 
 
   constructor(private ticRest:SoporteRestService, 
@@ -24,10 +27,42 @@ export class ListarTicketComponent implements OnInit {
     private route: ActivatedRoute){
     this.comunRest.get('/req').subscribe((data)=>{
       console.log(data);
-      this.ticList=data.data;
+      this.reqList=data;
     });
-  
- 
+   
+    http.get(this.url+'/ticket').subscribe((data:any)=>{
+
+      data.data.forEach( (value: any) => {
+
+        this.reqList.data.forEach( (valcat:any) => {
+       
+           
+          if(value.id_req === valcat.id){
+            value.descripcion = valcat.descripcion;
+          }
+          
+        })
+      })
+     
+      this.ticList=data;
+      console.log(this.ticList);
+      this.comunRest.get('/estado').subscribe((data: any)=>{
+        console.log(data);
+        data.data.forEach( (value: any) => {
+          console.log(value);
+          this.ticList.data.forEach( (valest:any) => {
+            console.log(valest);
+             
+            if(value.id === valest.id_estado){
+              valest.estado = value.estado;
+            }
+            
+          })
+        })
+      });
+    });
+
+    
 }
   ngOnInit(): void {
    

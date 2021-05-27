@@ -14,7 +14,8 @@ export class EditarTicketComponent implements OnInit {
   updateTic: FormGroup | any;
   serverErrors = [];
   ticList:any;
-  cargoList:any;
+  reqList:any;
+
   @Input() data: any;
 
   private url='http://mda-back.test/api';
@@ -26,8 +27,13 @@ export class EditarTicketComponent implements OnInit {
      public http: HttpClient ) { 
       http.get(this.url+'/req').subscribe((data)=>{
         console.log(data);
+        this.reqList=data;
+      });
+      http.get(this.url+'/ticket').subscribe((data)=>{
+        console.log(data);
         this.ticList=data;
       });
+
      }
 
   ngOnInit(): void {
@@ -39,12 +45,11 @@ export class EditarTicketComponent implements OnInit {
         console.log(response);
         
         this.updateTic.patchValue({
-        'nombre': response.data.nombre,
-        'ap_paterno': response.data.ap_paterno,
-        'ap_materno': response.data.ap_materno,
-        'unidad':response.data.unidad,
-        'rol':response.data.rol,
-        "id_cargo":response.data.id_cargo
+        'descripcion': response.data.descripcion,
+        'interno': response.data.interno,
+        'id_tiporeq': response.data.id_tiporeq,
+        'id_departamento':response.data.id_departamento,
+        
         // 'email':response.data.email
         })
       },
@@ -54,13 +59,11 @@ export class EditarTicketComponent implements OnInit {
     console.log(this.data);
 
     this.updateTic = new FormGroup({
-      'nombre': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-          'ap_paterno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
-          'ap_materno': new FormControl(null,[]),
-          // 'email': new FormControl(null, [Validators.required, Validators.email]),
-          'rol': new FormControl(null, [Validators.required]),
-          'id_cargo': new FormControl(null, [Validators.required]),
-          'unidad':new FormControl(null, )
+      'descripcion': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+          'interno': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+          'id_tiporeq': new FormControl(null,[]),
+          'id_departamento': new FormControl(null, [Validators.required]),
+          
       
     });
 

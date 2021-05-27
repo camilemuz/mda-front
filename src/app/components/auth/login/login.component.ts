@@ -7,6 +7,10 @@ import { AuthService } from '../../../services/auth.service';
 const Administrador: any[] = [
  
   {
+    path: '/home', title: 'Home',  class: '',
+    childMenu: null
+  },
+  {
     path: '/listar-usuario', title: 'Usuarios',  class: '',
     childMenu: null
   },
