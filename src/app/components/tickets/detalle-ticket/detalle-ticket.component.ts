@@ -14,8 +14,8 @@ export class DetalleTicketComponent implements OnInit {
 
   detForm:any;
   
- ticketList:any[]=[];
-  reqList:any[]=[];
+ ticketList:any;
+  reqList:any;
   
   
   dataUser:any;
@@ -34,7 +34,12 @@ constructor(
     
 
   
-  
+    this.comunRest.get('/ticket').subscribe((data)=>{
+      console.log(data);
+      this.ticketList=data.data;
+      console.log('d', this.ticketList);
+      
+    });
 
 
   this.comunRest.get('/req').subscribe((data)=>{
@@ -51,6 +56,10 @@ constructor(
         'id_user': new FormControl(null, []),
         'id_tiporeq': new FormControl(null, []),
         'id_departamento': new FormControl(null, []),
+        'id_estado': new FormControl(null, []),
+        'comentarios': new FormControl(null, []),
+        'numero': new FormControl(null, []),
+
 
 
       }      
@@ -61,11 +70,13 @@ constructor(
 
     
 
-    get descripcion() { return this.detForm.get('descripcion'); }  
-    get id_tiporeq() { return this.detForm.get('id_tiporeq'); }    
-    get id_departamento() { return this.detForm.get('id_departamento'); }
-    get id_user() { return this.detForm.get('id_user'); }
-    get interno() { return this.detForm.get('interno'); }
+      get id_tiporeq() { return this.detForm.get('id_tiporeq'); }
+      get descripcion() { return this.detForm.get('descripcion'); }
+      get interno() { return this.detForm.get('interno'); }  
+      get id_departamento() { return this.detForm.get('id_departamento'); }  
+      get id_estado() { return this.detForm.get('id_estado'); }      
+      get comentarios() { return this.detForm.get('comentarios'); }
+      get numero() { return this.detForm.get('numero'); }
     
 
     
