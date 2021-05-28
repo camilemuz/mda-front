@@ -19,7 +19,7 @@ export class SoporteRestService {
   }
 
   updateReq(form:any,id:number): Observable<any> {
-    return this.http.put(this.url +'/req/'+ id, form.value);
+    return this.http.put(this.url +'/req/'+ id, form);
   }
 
   storeReq(form:any): Observable<any> {
