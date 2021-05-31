@@ -20,6 +20,7 @@
                 <th scope="col">Estado</th>
                 <th scope="col">Requerimiento</th>
                 <th scope="col">Descripción</th>
+                <th scope="col">Departamento</th>
                 <th scope="col">Fecha de Solicitud</th>
                 <th scope="col">Acción</th>
                
@@ -31,7 +32,8 @@
                 <td>{{row.estado}}</td>
                 <td>{{row.tipoRequerimiento}}</td>
                 <td>{{row.descripcion}}</td>
-                <td>{{row.created_at}}</td>
+                <td>{{row.dpto}}</td>
+                <td>{{row.created_at| date: 'dd/MM/yyyy h:mm:ss a'}}</td>
                 <td>
                     <div>
                         <a (click)="editTic(row.id)"  class="btn btn-warning btn-sm">Editar</a>

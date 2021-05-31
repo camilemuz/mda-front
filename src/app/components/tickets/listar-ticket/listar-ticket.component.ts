@@ -16,6 +16,7 @@ export class ListarTicketComponent implements OnInit {
   ticList:any;  
   estList:any;  
   reqList:any; 
+  dptoList:any; 
 
 
 
@@ -25,6 +26,7 @@ export class ListarTicketComponent implements OnInit {
     private formBuilder: FormBuilder,  
     private router: Router,
     private route: ActivatedRoute){
+      
     this.comunRest.get('/req').subscribe((data)=>{
       console.log(data);
       this.reqList=data;
@@ -33,11 +35,26 @@ export class ListarTicketComponent implements OnInit {
           datos.data.forEach((ele:any) => {
             if(values.id_tiporeq===ele.id){
               values.tiporeq=ele.tiporeq;
+              
             }
             
           });
         });
       });
+      this.comunRest.get('/dpto').subscribe((datosdpto)=>{
+        console.log("deptrt-->",datosdpto);
+        this.reqList.data.forEach((valuesdpto:any) => {
+          datosdpto.data.forEach((eledpto:any) => {
+            if(valuesdpto.id_departamento===eledpto.id){
+              valuesdpto.departamento=eledpto.departamento;
+              
+              
+            }
+            
+          });
+        });
+      });
+        
       http.get(this.url+'/ticket').subscribe((data:any)=>{
 
         data.data.forEach( (value: any) => {
@@ -47,6 +64,8 @@ export class ListarTicketComponent implements OnInit {
             if(value.id_req === valcat.id){
               value.descripcion = valcat.descripcion;
               value.tipoRequerimiento = valcat.tiporeq;
+              value.dpto=valcat.departamento;
+            
             }
             
           })
@@ -60,13 +79,20 @@ export class ListarTicketComponent implements OnInit {
             this.ticList.forEach( (valest:any) => {
                
               if(value.id === valest.id_estado){
-                valest.estado = value.estado;          
+                valest.estado = value.estado;  
+                         
               }
               
             })
           })
         });
         
+        
+      
+
+        this.ticList=data.data;
+        console.log(this.ticList);
+
       });
     });
    
