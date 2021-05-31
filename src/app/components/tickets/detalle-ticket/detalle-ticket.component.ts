@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComuRestService } from 'src/app/services/comu-rest.service';
-import { SoporteRestService } from 'src/app/services/soporte-rest.service';
+
 
 @Component({
   selector: 'app-detalle-ticket',
-  templateUrl: './detalle-ticket.component.html',
+  templateUrl:'./detalle-ticket.component.html',
   styleUrls: ['./detalle-ticket.component.css']
 })
 export class DetalleTicketComponent implements OnInit {
@@ -19,6 +19,7 @@ export class DetalleTicketComponent implements OnInit {
   
   
   dataUser:any;
+  datosFila:any;
 
   private url='http://mda-back.test/api';
  
@@ -30,14 +31,24 @@ constructor(
   private formBuilder: FormBuilder, 
   private router: Router, 
   private route: ActivatedRoute) {
-
+    this.datosFila = JSON.parse(this.route.snapshot.params.datos);
+    console.log('fila', this.datosFila);
     
 
-  
+    let id = this.route.snapshot.params.id;
+    console.log('iddd', id);
+    this.comunRest.get('/ticket/'+id).subscribe(resp => {
+      console.log('respo', resp);
+      this.ticketList=resp.data;
+      
+      
+    }, error=>{
+      console.log('erro', error);
+      
+    })
+    
     this.comunRest.get('/ticket').subscribe((data)=>{
-      console.log(data);
-      this.ticketList=data.data;
-      console.log('d', this.ticketList);
+      console.log('sdfgsfd',data);
       
     });
 
@@ -77,10 +88,6 @@ constructor(
       get id_estado() { return this.detForm.get('id_estado'); }      
       get comentarios() { return this.detForm.get('comentarios'); }
       get numero() { return this.detForm.get('numero'); }
-    
-
-    
-    
 
     
      

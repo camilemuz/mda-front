@@ -1,0 +1,25 @@
+#navbar-nav ul{
+	list-style-type:none;
+	padding:0px;
+	margin:10px;
+	overflow:hidden;/* para que se oculte lo que sobra*/
+	background-color: #000;
+	z-index: 100;/* para que la lista se superponga a los otros elementos*/
+}
+
+
+/* elemento li del navbar que queden seguidos*/
+#navbar-nav ul li{
+	float:right;/* seguidos uno al lado del otro*/
+
+}
+
+/* enlaces dentro del elemento li del navbar*/
+.navbar-nav ul li a{ 
+	padding-right: 80px;
+	padding-left: 80px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+    color:rgb(198, 198, 211);
+    text-shadow: 2px 2px 5px rgb(240, 149, 13);
+}

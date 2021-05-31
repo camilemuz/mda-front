@@ -28,39 +28,49 @@ export class ListarTicketComponent implements OnInit {
     this.comunRest.get('/req').subscribe((data)=>{
       console.log(data);
       this.reqList=data;
-    });
-   
-    http.get(this.url+'/ticket').subscribe((data:any)=>{
+      this.comunRest.get('/tipo').subscribe((datos)=>{
+        this.reqList.data.forEach((values:any) => {
+          datos.data.forEach((ele:any) => {
+            if(values.id_tiporeq===ele.id){
+              values.tiporeq=ele.tiporeq;
+            }
+            
+          });
+        });
+      });
+      http.get(this.url+'/ticket').subscribe((data:any)=>{
 
-      data.data.forEach( (value: any) => {
-
-        this.reqList.data.forEach( (valcat:any) => {
-       
-           
-          if(value.id_req === valcat.id){
-            value.descripcion = valcat.descripcion;
-          }
-          
-        })
-      })
-     
-      this.ticList=data;
-      console.log(this.ticList);
-      this.comunRest.get('/estado').subscribe((data: any)=>{
-        console.log(data);
         data.data.forEach( (value: any) => {
-          console.log(value);
-          this.ticList.data.forEach( (valest:any) => {
-            console.log(valest);
+  
+          this.reqList.data.forEach( (valcat:any) => {      
              
-            if(value.id === valest.id_estado){
-              valest.estado = value.estado;
+            if(value.id_req === valcat.id){
+              value.descripcion = valcat.descripcion;
+              value.tipoRequerimiento = valcat.tiporeq;
             }
             
           })
         })
+       
+        this.ticList=data.data;
+        console.log(this.ticList);
+        this.comunRest.get('/estado').subscribe((data: any)=>{
+          console.log(data);
+          data.data.forEach( (value: any) => {
+            this.ticList.forEach( (valest:any) => {
+               
+              if(value.id === valest.id_estado){
+                valest.estado = value.estado;          
+              }
+              
+            })
+          })
+        });
+        
       });
     });
+   
+    
 
     
 }
@@ -83,8 +93,9 @@ export class ListarTicketComponent implements OnInit {
     this.router.navigate(['/editar-ticket',id]);
   }
 
-   detalleTic(id:number){
-     this.router.navigate(['/detalle-ticket',id]);
+   detalleTic(value: any){
+    
+     this.router.navigate(['/detalle-ticket',value.id,{datos: JSON.stringify(value)}]);
    }
 
 }

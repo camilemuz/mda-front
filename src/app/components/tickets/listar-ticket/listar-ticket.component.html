@@ -1,4 +1,5 @@
-<div class="container">
+<div class="jumbotron">
+    <div class="container">
     <h1>Tickets</h1>
     <hr>
 
@@ -18,15 +19,17 @@
                 <th scope="col">Número</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Requerimiento</th>
+                <th scope="col">Descripción</th>
                 <th scope="col">Fecha de Solicitud</th>
                 <th scope="col">Acción</th>
                
             </tr>
 
-            <tr *ngFor="let row of ticList.data">
+            <tr *ngFor="let row of ticList">
                 <td>{{row.id}}</td>
                 <td>{{row.numero}}</td>
                 <td>{{row.estado}}</td>
+                <td>{{row.tipoRequerimiento}}</td>
                 <td>{{row.descripcion}}</td>
                 <td>{{row.created_at}}</td>
                 <td>
@@ -35,13 +38,13 @@
                         &nbsp;
                         <!-- <a (click)="deleteTic(row.id)" class="btn btn-danger btn-sm">Eliminar</a>
                         &nbsp; -->
-                        <a (click)="detalleTic(row.id)" class="btn btn-info btn-sm">Detalle</a>
+                        <a (click)="detalleTic(row)" class="btn btn-info btn-sm">Detalle</a>
                     </div>
                 </td>
             </tr>
             
             </table>
         <!-- </div> -->
-        
+    </div> 
 </div>
 

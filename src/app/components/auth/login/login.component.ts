@@ -19,13 +19,14 @@ const Administrador: any[] = [
     childMenu: null
   },
   {
-    path: '/configuracion', title: 'Configuracion',  class: '',
-    childMenu: null
-  },
-  {
     path: '/dashboard', title: 'Dashboard',  class: '',
     childMenu: null
   },
+  {
+    path: '/configuracion', title: 'Configuración',  class: '',
+    childMenu: null
+  },
+  
  
 ];
 const Agente: any[] = [

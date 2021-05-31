@@ -51,4 +51,6 @@ deleteTicket(id:number): Observable<any> {
   return this.http.delete(this.url+'/ticket/'+ id);
 }
 
+
+
 }
